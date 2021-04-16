@@ -26,6 +26,8 @@ class LoginMovieViewController: UIViewController {
         playerLayer.zPosition = -1
         view.layer.insertSublayer(playerLayer, at: 0)
         
+        self.player.play()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,7 +38,12 @@ class LoginMovieViewController: UIViewController {
         
     }
     
-
+    @IBAction func login(_ sender: Any) {
+        
+        player.pause()
+        
+    }
+    
     /*
     // MARK: - Navigation
 

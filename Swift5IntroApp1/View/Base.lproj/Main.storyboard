@@ -70,6 +70,10 @@
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="ログイン"/>
+                                <connections>
+                                    <action selector="login:" destination="mYF-vp-ZsK" eventType="touchUpInside" id="OPM-ui-nGI"/>
+                                    <segue destination="NQo-Ay-nZh" kind="show" id="oyM-3P-pTU"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="onL-I2-Gf4"/>
@@ -79,6 +83,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lab-a2-Iae" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1486.9565217391305" y="55.580357142857139"/>
+        </scene>
+        <!--Base View Controller-->
+        <scene sceneID="hXs-xP-cZP">
+            <objects>
+                <viewController id="NQo-Ay-nZh" customClass="BaseViewController" customModule="Swift5IntroApp1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oYs-u4-fCp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="7vE-z9-IHe"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="SGs-au-wIZ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E7U-Eq-sK0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2322" y="56"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZG0-zU-QIU">
