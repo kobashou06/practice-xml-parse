@@ -21,9 +21,9 @@ class IntroViewController: UIViewController, UIScrollViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //スクロールしたいのでTrueに設定
-        scrollView.isScrollEnabled = true
-        
+        //ページングしたいのでTrueに設定
+        scrollView.isPagingEnabled = true
+
         //アニメーション置き場生成
         setUpScroll()
         
@@ -32,7 +32,10 @@ class IntroViewController: UIViewController, UIScrollViewDelegate{
             
             let animationView = AnimationView()
             let animation = Animation.named(onboardArray[i])
-            animationView.frame = CGRect(x: CGFloat(i) * view.frame.size.width, y: 0, width: view.frame.size.width, height: view.frame.size.height)
+            animationView.frame = CGRect(x: CGFloat(i) * view.frame.size.width,
+                                         y: 0,
+                                         width: view.frame.size.width,
+                                         height: view.frame.size.height)
             animationView.animation = animation
             animationView.contentMode = .scaleAspectFit
             animationView.loopMode = .loop
@@ -54,13 +57,18 @@ class IntroViewController: UIViewController, UIScrollViewDelegate{
         
         scrollView.delegate = self
         
-        scrollView.contentSize = CGSize(width: view.frame.size.width * 5, height: view.frame.size.height)
+        scrollView.contentSize = CGSize(width: view.frame.size.width * 5,
+                                        height: view.frame.size.height)
         //contentSizeの横幅　＝ view.frame.size.width　* （表示したい要素の数分！）という認識。。。
         
         //jsonファイルの置き場所用意
         for i in 0...4{
             
-            let onboardLabel = UILabel(frame: CGRect(x: CGFloat(i) * view.frame.size.width, y: view.frame.size.height / 3, width: scrollView.frame.size.width, height: scrollView.frame.size.height))
+            let onboardLabel = UILabel(frame: CGRect(x: CGFloat(i) * view.frame.size.width,
+                                                     y: view.frame.size.height / 3,
+                                                     width: scrollView.frame.size.width,
+                                                     height: scrollView.frame.size.height)
+            )
             
             onboardLabel.font = UIFont.systemFont(ofSize: 15.0)
             onboardLabel.textAlignment = .center
