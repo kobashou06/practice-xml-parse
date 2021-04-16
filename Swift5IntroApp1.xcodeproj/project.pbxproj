@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,8 @@
 		CE0C11B8262421D700D24B86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE0C11B6262421D700D24B86 /* Main.storyboard */; };
 		CE0C11BA262421DB00D24B86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE0C11B9262421DB00D24B86 /* Assets.xcassets */; };
 		CE0C11BD262421DB00D24B86 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE0C11BB262421DB00D24B86 /* LaunchScreen.storyboard */; };
+		CE3C1B4526296BEF0040C259 /* LoginMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3C1B4426296BEF0040C259 /* LoginMovieViewController.swift */; };
+		CE3C1B4B262970840040C259 /* start.mov in Resources */ = {isa = PBXBuildFile; fileRef = CE3C1B4A262970840040C259 /* start.mov */; };
 		CE47D0F326294BC5009F0B82 /* 2.json in Resources */ = {isa = PBXBuildFile; fileRef = CE47D0EE26294BC4009F0B82 /* 2.json */; };
 		CE47D0F426294BC5009F0B82 /* 4.json in Resources */ = {isa = PBXBuildFile; fileRef = CE47D0EF26294BC4009F0B82 /* 4.json */; };
 		CE47D0F526294BC5009F0B82 /* 5.json in Resources */ = {isa = PBXBuildFile; fileRef = CE47D0F026294BC4009F0B82 /* 5.json */; };
@@ -31,6 +33,8 @@
 		CE0C11B9262421DB00D24B86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE0C11BC262421DB00D24B86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE0C11BE262421DB00D24B86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE3C1B4426296BEF0040C259 /* LoginMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMovieViewController.swift; sourceTree = "<group>"; };
+		CE3C1B4A262970840040C259 /* start.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = start.mov; sourceTree = "<group>"; };
 		CE47D0EE26294BC4009F0B82 /* 2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 2.json; sourceTree = "<group>"; };
 		CE47D0EF26294BC4009F0B82 /* 4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 4.json; sourceTree = "<group>"; };
 		CE47D0F026294BC4009F0B82 /* 5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 5.json; sourceTree = "<group>"; };
@@ -58,7 +62,6 @@
 				AF85A3D3A714EEDB0CE3D457 /* Pods-Swift5IntroApp1.debug.xcconfig */,
 				DB2CACB753C081A9A16EEBD8 /* Pods-Swift5IntroApp1.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -95,6 +98,7 @@
 				CE47D0EC26294B21009F0B82 /* View */,
 				CE47D0ED26294B2A009F0B82 /* Controller */,
 				CE0C11BE262421DB00D24B86 /* Info.plist */,
+				CE3C1B4A262970840040C259 /* start.mov */,
 				CE47D0F126294BC5009F0B82 /* 1.json */,
 				CE47D0EE26294BC4009F0B82 /* 2.json */,
 				CE47D0F226294BC5009F0B82 /* 3.json */,
@@ -127,6 +131,7 @@
 				CE0C11B0262421D700D24B86 /* AppDelegate.swift */,
 				CE0C11B2262421D700D24B86 /* SceneDelegate.swift */,
 				CE47D0FA26294C48009F0B82 /* IntroViewController.swift */,
+				CE3C1B4426296BEF0040C259 /* LoginMovieViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -196,6 +201,7 @@
 				CE47D0F526294BC5009F0B82 /* 5.json in Resources */,
 				CE0C11BA262421DB00D24B86 /* Assets.xcassets in Resources */,
 				CE47D0F426294BC5009F0B82 /* 4.json in Resources */,
+				CE3C1B4B262970840040C259 /* start.mov in Resources */,
 				CE0C11B8262421D700D24B86 /* Main.storyboard in Resources */,
 				CE47D0F726294BC5009F0B82 /* 3.json in Resources */,
 			);
@@ -251,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE47D0FB26294C48009F0B82 /* IntroViewController.swift in Sources */,
+				CE3C1B4526296BEF0040C259 /* LoginMovieViewController.swift in Sources */,
 				CE0C11B1262421D700D24B86 /* AppDelegate.swift in Sources */,
 				CE0C11B3262421D700D24B86 /* SceneDelegate.swift in Sources */,
 			);
