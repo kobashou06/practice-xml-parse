@@ -26,6 +26,7 @@ class LoginMovieViewController: UIViewController {
         playerLayer.zPosition = -1
         view.layer.insertSublayer(playerLayer, at: 0)
         
+        self.player.isMuted = true
         self.player.play()
         
     }
