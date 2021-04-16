@@ -1,5 +1,5 @@
 # practice-xml-parse
-##一部jsonファイルを扱う練習も含む。
+### 一部jsonファイルを扱う練習も含む。
 
 ![demo](https://github.com/kobashou06/practice-xml-parse/blob/main/appdemo.gif)
 
