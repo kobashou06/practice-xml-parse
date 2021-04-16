@@ -7,23 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0DD06C58047C7FE84252F275 /* Pods_Swift5IntroApp1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35C9D103E8C377D264FB49FE /* Pods_Swift5IntroApp1.framework */; };
 		CE0C11B1262421D700D24B86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0C11B0262421D700D24B86 /* AppDelegate.swift */; };
 		CE0C11B3262421D700D24B86 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0C11B2262421D700D24B86 /* SceneDelegate.swift */; };
-		CE0C11B5262421D700D24B86 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0C11B4262421D700D24B86 /* ViewController.swift */; };
 		CE0C11B8262421D700D24B86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE0C11B6262421D700D24B86 /* Main.storyboard */; };
 		CE0C11BA262421DB00D24B86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE0C11B9262421DB00D24B86 /* Assets.xcassets */; };
 		CE0C11BD262421DB00D24B86 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE0C11BB262421DB00D24B86 /* LaunchScreen.storyboard */; };
+		CE47D0F326294BC5009F0B82 /* 2.json in Resources */ = {isa = PBXBuildFile; fileRef = CE47D0EE26294BC4009F0B82 /* 2.json */; };
+		CE47D0F426294BC5009F0B82 /* 4.json in Resources */ = {isa = PBXBuildFile; fileRef = CE47D0EF26294BC4009F0B82 /* 4.json */; };
+		CE47D0F526294BC5009F0B82 /* 5.json in Resources */ = {isa = PBXBuildFile; fileRef = CE47D0F026294BC4009F0B82 /* 5.json */; };
+		CE47D0F626294BC5009F0B82 /* 1.json in Resources */ = {isa = PBXBuildFile; fileRef = CE47D0F126294BC5009F0B82 /* 1.json */; };
+		CE47D0F726294BC5009F0B82 /* 3.json in Resources */ = {isa = PBXBuildFile; fileRef = CE47D0F226294BC5009F0B82 /* 3.json */; };
+		CE47D0FB26294C48009F0B82 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE47D0FA26294C48009F0B82 /* IntroViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		35C9D103E8C377D264FB49FE /* Pods_Swift5IntroApp1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swift5IntroApp1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF85A3D3A714EEDB0CE3D457 /* Pods-Swift5IntroApp1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swift5IntroApp1.debug.xcconfig"; path = "Target Support Files/Pods-Swift5IntroApp1/Pods-Swift5IntroApp1.debug.xcconfig"; sourceTree = "<group>"; };
 		CE0C11AD262421D700D24B86 /* Swift5IntroApp1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swift5IntroApp1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE0C11B0262421D700D24B86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE0C11B2262421D700D24B86 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CE0C11B4262421D700D24B86 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CE0C11B7262421D700D24B86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE0C11B9262421DB00D24B86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE0C11BC262421DB00D24B86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE0C11BE262421DB00D24B86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE47D0EE26294BC4009F0B82 /* 2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 2.json; sourceTree = "<group>"; };
+		CE47D0EF26294BC4009F0B82 /* 4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 4.json; sourceTree = "<group>"; };
+		CE47D0F026294BC4009F0B82 /* 5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 5.json; sourceTree = "<group>"; };
+		CE47D0F126294BC5009F0B82 /* 1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 1.json; sourceTree = "<group>"; };
+		CE47D0F226294BC5009F0B82 /* 3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 3.json; sourceTree = "<group>"; };
+		CE47D0FA26294C48009F0B82 /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
+		DB2CACB753C081A9A16EEBD8 /* Pods-Swift5IntroApp1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swift5IntroApp1.release.xcconfig"; path = "Target Support Files/Pods-Swift5IntroApp1/Pods-Swift5IntroApp1.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +45,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DD06C58047C7FE84252F275 /* Pods_Swift5IntroApp1.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		91313B5A4250FA41BCAFCC16 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AF85A3D3A714EEDB0CE3D457 /* Pods-Swift5IntroApp1.debug.xcconfig */,
+				DB2CACB753C081A9A16EEBD8 /* Pods-Swift5IntroApp1.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		C8BF73DE33EF6D81B1F2DF24 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				35C9D103E8C377D264FB49FE /* Pods_Swift5IntroApp1.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CE0C11A4262421D700D24B86 = {
 			isa = PBXGroup;
 			children = (
 				CE0C11AF262421D700D24B86 /* Swift5IntroApp1 */,
 				CE0C11AE262421D700D24B86 /* Products */,
+				91313B5A4250FA41BCAFCC16 /* Pods */,
+				C8BF73DE33EF6D81B1F2DF24 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +91,44 @@
 		CE0C11AF262421D700D24B86 /* Swift5IntroApp1 */ = {
 			isa = PBXGroup;
 			children = (
-				CE0C11B0262421D700D24B86 /* AppDelegate.swift */,
-				CE0C11B2262421D700D24B86 /* SceneDelegate.swift */,
-				CE0C11B4262421D700D24B86 /* ViewController.swift */,
+				CE47D0EB26294B17009F0B82 /* Model */,
+				CE47D0EC26294B21009F0B82 /* View */,
+				CE47D0ED26294B2A009F0B82 /* Controller */,
+				CE0C11BE262421DB00D24B86 /* Info.plist */,
+				CE47D0F126294BC5009F0B82 /* 1.json */,
+				CE47D0EE26294BC4009F0B82 /* 2.json */,
+				CE47D0F226294BC5009F0B82 /* 3.json */,
+				CE47D0EF26294BC4009F0B82 /* 4.json */,
+				CE47D0F026294BC4009F0B82 /* 5.json */,
+			);
+			path = Swift5IntroApp1;
+			sourceTree = "<group>";
+		};
+		CE47D0EB26294B17009F0B82 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CE47D0EC26294B21009F0B82 /* View */ = {
+			isa = PBXGroup;
+			children = (
 				CE0C11B6262421D700D24B86 /* Main.storyboard */,
 				CE0C11B9262421DB00D24B86 /* Assets.xcassets */,
 				CE0C11BB262421DB00D24B86 /* LaunchScreen.storyboard */,
-				CE0C11BE262421DB00D24B86 /* Info.plist */,
 			);
-			path = Swift5IntroApp1;
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE47D0ED26294B2A009F0B82 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CE0C11B0262421D700D24B86 /* AppDelegate.swift */,
+				CE0C11B2262421D700D24B86 /* SceneDelegate.swift */,
+				CE47D0FA26294C48009F0B82 /* IntroViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +138,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE0C11C1262421DB00D24B86 /* Build configuration list for PBXNativeTarget "Swift5IntroApp1" */;
 			buildPhases = (
+				A3519CA4206547669DF73911 /* [CP] Check Pods Manifest.lock */,
 				CE0C11A9262421D700D24B86 /* Sources */,
 				CE0C11AA262421D700D24B86 /* Frameworks */,
 				CE0C11AB262421D700D24B86 /* Resources */,
+				B69B5ECC7718D59E3592AC7F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -124,20 +190,67 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE47D0F626294BC5009F0B82 /* 1.json in Resources */,
+				CE47D0F326294BC5009F0B82 /* 2.json in Resources */,
 				CE0C11BD262421DB00D24B86 /* LaunchScreen.storyboard in Resources */,
+				CE47D0F526294BC5009F0B82 /* 5.json in Resources */,
 				CE0C11BA262421DB00D24B86 /* Assets.xcassets in Resources */,
+				CE47D0F426294BC5009F0B82 /* 4.json in Resources */,
 				CE0C11B8262421D700D24B86 /* Main.storyboard in Resources */,
+				CE47D0F726294BC5009F0B82 /* 3.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A3519CA4206547669DF73911 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Swift5IntroApp1-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B69B5ECC7718D59E3592AC7F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Swift5IntroApp1/Pods-Swift5IntroApp1-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Swift5IntroApp1/Pods-Swift5IntroApp1-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Swift5IntroApp1/Pods-Swift5IntroApp1-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CE0C11A9262421D700D24B86 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE0C11B5262421D700D24B86 /* ViewController.swift in Sources */,
+				CE47D0FB26294C48009F0B82 /* IntroViewController.swift in Sources */,
 				CE0C11B1262421D700D24B86 /* AppDelegate.swift in Sources */,
 				CE0C11B3262421D700D24B86 /* SceneDelegate.swift in Sources */,
 			);
@@ -283,6 +396,7 @@
 		};
 		CE0C11C2262421DB00D24B86 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AF85A3D3A714EEDB0CE3D457 /* Pods-Swift5IntroApp1.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -302,6 +416,7 @@
 		};
 		CE0C11C3262421DB00D24B86 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DB2CACB753C081A9A16EEBD8 /* Pods-Swift5IntroApp1.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
