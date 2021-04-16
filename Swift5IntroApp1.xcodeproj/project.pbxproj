@@ -47,7 +47,7 @@
 		CE47D0FA26294C48009F0B82 /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		CEB0745F2629B84C000E9D0F /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		CEB074662629BB7C000E9D0F /* NewsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPageViewController.swift; sourceTree = "<group>"; };
-		CEB074692629C9D0000E9D0F /* NewsItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewsItems.swift; path = Swift5IntroApp1/Controller/NewsItems.swift; sourceTree = SOURCE_ROOT; };
+		CEB074692629C9D0000E9D0F /* NewsItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewsItems.swift; path = Swift5IntroApp1/Model/NewsItems.swift; sourceTree = SOURCE_ROOT; };
 		CEB0746C2629D0D0000E9D0F /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		DB2CACB753C081A9A16EEBD8 /* Pods-Swift5IntroApp1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swift5IntroApp1.release.xcconfig"; path = "Target Support Files/Pods-Swift5IntroApp1/Pods-Swift5IntroApp1.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
