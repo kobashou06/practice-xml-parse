@@ -25,6 +25,9 @@
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5l6-i6-bRW">
                                 <rect key="frame" x="304" y="98" width="90" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="5l6-i6-bRW" secondAttribute="height" multiplier="30:13" id="zaf-Ya-9FE"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <state key="normal" title="スキップ">
                                     <color key="titleColor" systemColor="labelColor"/>
@@ -38,6 +41,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="5l6-i6-bRW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="2GM-ro-1X5"/>
+                            <constraint firstItem="5l6-i6-bRW" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.217391" id="Z8t-2p-NM0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5l6-i6-bRW" secondAttribute="trailing" constant="20" id="tgI-1o-Bot"/>
                         </constraints>
                     </view>
@@ -54,22 +58,28 @@
         <scene sceneID="fVR-EX-I8h">
             <objects>
                 <viewController modalTransitionStyle="crossDissolve" id="mYF-vp-ZsK" customClass="LoginMovieViewController" customModule="Swift5IntroApp1" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="zSk-lF-1uY">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="zSk-lF-1uY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GdT-mj-4OV">
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GdT-mj-4OV">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="950"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="yg4-w8-9DO">
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="yg4-w8-9DO">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="950"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <blurEffect style="regular"/>
                             </visualEffectView>
-                            <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BUH-iN-avZ">
-                                <rect key="frame" x="166" y="430" width="82" height="36"/>
+                            <view opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="U8j-MB-WYq">
+                                <rect key="frame" x="0.0" y="-27" width="414" height="950"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </view>
+                            <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BUH-iN-avZ">
+                                <rect key="frame" x="107" y="430" width="200" height="36"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="BUH-iN-avZ" secondAttribute="height" multiplier="50:9" id="CN4-wW-sAh"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="ログイン"/>
                                 <connections>
@@ -77,8 +87,11 @@
                                     <segue destination="NQo-Ay-nZh" kind="show" id="oyM-3P-pTU"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NEi-tT-fHs">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Hi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NEi-tT-fHs">
                                 <rect key="frame" x="187" y="224" width="40" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="NEi-tT-fHs" secondAttribute="height" multiplier="5:6" id="cLf-Hr-Yl9"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -86,10 +99,17 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="onL-I2-Gf4"/>
                         <constraints>
-                            <constraint firstItem="BUH-iN-avZ" firstAttribute="centerY" secondItem="zSk-lF-1uY" secondAttribute="centerY" id="5cF-ov-Rmn"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="GdT-mj-4OV" secondAttribute="bottom" constant="-88" id="3cx-9i-s5O"/>
+                            <constraint firstItem="BUH-iN-avZ" firstAttribute="centerY" secondItem="U8j-MB-WYq" secondAttribute="centerY" id="5eo-lO-eNR"/>
+                            <constraint firstItem="BUH-iN-avZ" firstAttribute="centerX" secondItem="NEi-tT-fHs" secondAttribute="centerX" id="BOR-f3-aSN"/>
+                            <constraint firstItem="GdT-mj-4OV" firstAttribute="leading" secondItem="U8j-MB-WYq" secondAttribute="leading" id="Fld-kQ-JAS"/>
+                            <constraint firstItem="NEi-tT-fHs" firstAttribute="width" secondItem="zSk-lF-1uY" secondAttribute="width" multiplier="0.0966184" id="TCc-L2-rrS"/>
+                            <constraint firstItem="GdT-mj-4OV" firstAttribute="height" secondItem="zSk-lF-1uY" secondAttribute="height" multiplier="1.06027" id="V0S-eA-vnk"/>
                             <constraint firstItem="NEi-tT-fHs" firstAttribute="centerX" secondItem="zSk-lF-1uY" secondAttribute="centerX" id="X6z-tR-eov"/>
-                            <constraint firstItem="BUH-iN-avZ" firstAttribute="centerX" secondItem="zSk-lF-1uY" secondAttribute="centerX" id="enC-kb-Ium"/>
                             <constraint firstItem="NEi-tT-fHs" firstAttribute="centerY" secondItem="zSk-lF-1uY" secondAttribute="centerY" constant="-200" id="hzA-it-Qkp"/>
+                            <constraint firstItem="BUH-iN-avZ" firstAttribute="centerX" secondItem="GdT-mj-4OV" secondAttribute="centerX" id="nw3-dG-rSS"/>
+                            <constraint firstItem="GdT-mj-4OV" firstAttribute="top" secondItem="zSk-lF-1uY" secondAttribute="topMargin" constant="-88" id="uib-VR-m2R"/>
+                            <constraint firstItem="BUH-iN-avZ" firstAttribute="width" secondItem="zSk-lF-1uY" secondAttribute="width" multiplier="0.483092" id="v2Y-He-Aji"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bNP-gK-EuK"/>
