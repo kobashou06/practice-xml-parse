@@ -12,11 +12,15 @@ import AVFoundation
 
 class LoginMovieViewController: UIViewController {
     
+    @IBOutlet weak var blurView: UIVisualEffectView!
+    
     var player = AVPlayer()
     let path = Bundle.main.path(forResource: "start", ofType: "mov")
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        blurView.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: view.bounds.size.height)
 
         player = AVPlayer(url: URL(fileURLWithPath: path!))
         

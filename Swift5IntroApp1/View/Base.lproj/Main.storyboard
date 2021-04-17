@@ -23,9 +23,8 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="xYj-qa-kTR"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="RZX-Up-drQ"/>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5l6-i6-bRW">
-                                <rect key="frame" x="276" y="88" width="104" height="51"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5l6-i6-bRW">
+                                <rect key="frame" x="304" y="98" width="90" height="39"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <state key="normal" title="スキップ">
                                     <color key="titleColor" systemColor="labelColor"/>
@@ -37,6 +36,10 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="5l6-i6-bRW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="2GM-ro-1X5"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5l6-i6-bRW" secondAttribute="trailing" constant="20" id="tgI-1o-Bot"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="TUH-3H-GLC"/>
                     <connections>
@@ -50,23 +53,22 @@
         <!--Login Movie View Controller-->
         <scene sceneID="fVR-EX-I8h">
             <objects>
-                <viewController id="mYF-vp-ZsK" customClass="LoginMovieViewController" customModule="Swift5IntroApp1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" id="mYF-vp-ZsK" customClass="LoginMovieViewController" customModule="Swift5IntroApp1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zSk-lF-1uY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.80000000000000004" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QQm-ul-QNG">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GdT-mj-4OV">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="950"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemGray2Color"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="36u-we-LPd">
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BUH-iN-avZ">
-                                <rect key="frame" x="71" y="413" width="271" height="69"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="yg4-w8-9DO">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="950"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="regular"/>
+                            </visualEffectView>
+                            <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BUH-iN-avZ">
+                                <rect key="frame" x="166" y="430" width="82" height="36"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="ログイン"/>
@@ -75,10 +77,25 @@
                                     <segue destination="NQo-Ay-nZh" kind="show" id="oyM-3P-pTU"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NEi-tT-fHs">
+                                <rect key="frame" x="187" y="224" width="40" height="48"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="onL-I2-Gf4"/>
+                        <constraints>
+                            <constraint firstItem="BUH-iN-avZ" firstAttribute="centerY" secondItem="zSk-lF-1uY" secondAttribute="centerY" id="5cF-ov-Rmn"/>
+                            <constraint firstItem="NEi-tT-fHs" firstAttribute="centerX" secondItem="zSk-lF-1uY" secondAttribute="centerX" id="X6z-tR-eov"/>
+                            <constraint firstItem="BUH-iN-avZ" firstAttribute="centerX" secondItem="zSk-lF-1uY" secondAttribute="centerX" id="enC-kb-Ium"/>
+                            <constraint firstItem="NEi-tT-fHs" firstAttribute="centerY" secondItem="zSk-lF-1uY" secondAttribute="centerY" constant="-200" id="hzA-it-Qkp"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bNP-gK-EuK"/>
+                    <connections>
+                        <outlet property="blurView" destination="GdT-mj-4OV" id="vDZ-Ca-vXF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lab-a2-Iae" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -125,9 +142,6 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -59,6 +59,9 @@ class IntroViewController: UIViewController, UIScrollViewDelegate{
         
         scrollView.delegate = self
         
+        //scrollViewの枠の大きさを、親のViewの大きさと同じにして配置する。
+        scrollView.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: view.bounds.size.height)
+        
         scrollView.contentSize = CGSize(width: view.frame.size.width * 5,
                                         height: view.frame.size.height)
         //contentSizeの横幅　＝ view.frame.size.width　* （表示したい要素の数分！）という認識。。。
