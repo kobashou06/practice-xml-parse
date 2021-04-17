@@ -1,9 +1,6 @@
 # practice-xml-parse
 
 
-### 一部jsonファイルを扱う練習も含む。
-
-
 ## 前半:json形式のアニメーション再生
 
 
