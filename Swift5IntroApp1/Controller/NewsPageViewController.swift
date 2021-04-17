@@ -5,6 +5,8 @@
 //  Created by user on 2021/04/16.
 //
 
+//タップされたニュース記事ごとの処理
+
 import UIKit
 import SegementSlide
 

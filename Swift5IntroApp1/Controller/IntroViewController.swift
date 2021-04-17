@@ -5,6 +5,8 @@
 //  Created by kobashou06 on 2021/04/16.
 //
 
+//導入のアニメーション画面
+
 import UIKit
 import Lottie
 

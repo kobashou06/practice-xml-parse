@@ -5,6 +5,8 @@
 //  Created by user on 2021/04/16.
 //
 
+//実際のニュース記事の表示画面
+
 import UIKit
 import WebKit
 

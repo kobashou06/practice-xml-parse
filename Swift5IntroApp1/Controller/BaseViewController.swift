@@ -1,5 +1,8 @@
 import UIKit
 import SegementSlide
+import ImpressiveNotifications
+
+//ニュース記事一覧画面
 
 
 class BaseViewController: SegementSlideDefaultViewController{
@@ -11,10 +14,19 @@ class BaseViewController: SegementSlideDefaultViewController{
         reloadData()
 
         defaultSelectedIndex = 0
+        
+        //ImpressiveNotificationsを使って、通知を出してみる（ログイン成功を伝える）
+        INNotifications.show(type: .success,data: INNotificationData(title: "Success",
+                                                                     description: "Login was successful!",
+                                                                     image: nil,
+                                                                     delay: 2.0,
+                                                                     completionHandler: {print("Login was successful")})
+        )
 
     }
 
-
+    
+    //この辺りの理解がまだ少し弱いです。ビューやボタンの配置（AutoLayout）について学習を進めます
     override func segementSlideHeaderView() -> UIView {
 
         let headerView = UIImageView()
@@ -47,6 +59,7 @@ class BaseViewController: SegementSlideDefaultViewController{
 
     override var titlesInSwitcher: [String] {
 
+        //教材とは違う記事を選定しました
         return ["TOP","Abema TIMES","Yahoo! JAPAN クリエイターズプログラム","IT","BuzzFeed Japan","CNN.co.jp"]
 
     }

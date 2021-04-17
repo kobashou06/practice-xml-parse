@@ -14,8 +14,8 @@
             filePath = "Swift5IntroApp1/Controller/BaseViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "segementSlideHeaderView()"
             landmarkType = "7">
          </BreakpointContent>

@@ -5,6 +5,8 @@
 //  Created by kobashou06 on 2021/04/16.
 //
 
+//ログイン画面
+
 import UIKit
 import AVFoundation
 
