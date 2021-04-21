@@ -18,15 +18,85 @@ class LoginMovieViewController: UIViewController {
     let path = Bundle.main.path(forResource: "start", ofType: "mov")
 
     override func viewDidLoad() {
-        super.viewDidLoad()
         
-        blurView.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: view.bounds.size.height)
+        super.viewDidLoad()
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.isNavigationBarHidden = false
+        
+        setUpMoviePlayer()
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        
+        //blurViewの制約を設定
+        blurView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let blurViewTopConstraint =
+            NSLayoutConstraint(item: blurView as Any,
+                               attribute: NSLayoutConstraint.Attribute.top,
+                               relatedBy: NSLayoutConstraint.Relation.equal,
+                               toItem: self.view,
+                               attribute: NSLayoutConstraint.Attribute.top,
+                               multiplier: 1.0,
+                               constant: 0)
+
+        self.view.addConstraint(blurViewTopConstraint)
+        
+        let blurViewLeadingConstraint =
+            NSLayoutConstraint(item: blurView as Any,
+                               attribute: NSLayoutConstraint.Attribute.leading,
+                               relatedBy: NSLayoutConstraint.Relation.equal,
+                               toItem: self.view,
+                               attribute: NSLayoutConstraint.Attribute.leading,
+                               multiplier: 1.0,
+                               constant: 0)
+        
+        self.view.addConstraint(blurViewLeadingConstraint)
+        
+        let blurViewBottomConstraint =
+            NSLayoutConstraint(item: blurView as Any,
+                               attribute: NSLayoutConstraint.Attribute.bottom,
+                               relatedBy: NSLayoutConstraint.Relation.equal,
+                               toItem: self.view,
+                               attribute: NSLayoutConstraint.Attribute.bottom,
+                               multiplier: 1.0,
+                               constant: 0)
+        
+        self.view.addConstraint(blurViewBottomConstraint)
+        
+        
+        let blurViewTralingConstraint =
+            NSLayoutConstraint(item: blurView as Any,
+                               attribute: NSLayoutConstraint.Attribute.trailing,
+                               relatedBy: NSLayoutConstraint.Relation.equal,
+                               toItem: self.view,
+                               attribute: NSLayoutConstraint.Attribute.trailing,
+                               multiplier: 1.0,
+                               constant: 0)
+        
+        self.view.addConstraint(blurViewTralingConstraint)
+        
+        
+        
+    }
+    
+    func setUpMoviePlayer(){
+        
         player = AVPlayer(url: URL(fileURLWithPath: path!))
         
         //AVPlayer用のレイヤー作成
         let playerLayer = AVPlayerLayer(player: player)
-        playerLayer.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
+        playerLayer.frame = CGRect(x: 0,
+                                   y: 0,
+                                   width: view.frame.size.width,
+                                   height: view.frame.size.height)
         playerLayer.videoGravity = .resizeAspectFill
         playerLayer.repeatCount = 0
         playerLayer.zPosition = -1
@@ -34,14 +104,6 @@ class LoginMovieViewController: UIViewController {
         
         self.player.isMuted = true
         self.player.play()
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-        super.viewWillAppear(animated)
-        
-        self.navigationController?.isNavigationBarHidden = true
         
     }
     
