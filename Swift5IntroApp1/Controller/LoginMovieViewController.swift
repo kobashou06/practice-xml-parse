@@ -40,10 +40,10 @@ class LoginMovieViewController: UIViewController {
         
         let blurViewTopConstraint =
             NSLayoutConstraint(item: blurView as Any,
-                               attribute: NSLayoutConstraint.Attribute.top,
-                               relatedBy: NSLayoutConstraint.Relation.equal,
+                               attribute: .top,
+                               relatedBy: .equal,
                                toItem: self.view,
-                               attribute: NSLayoutConstraint.Attribute.top,
+                               attribute: .top,
                                multiplier: 1.0,
                                constant: 0)
 
@@ -51,10 +51,10 @@ class LoginMovieViewController: UIViewController {
         
         let blurViewLeadingConstraint =
             NSLayoutConstraint(item: blurView as Any,
-                               attribute: NSLayoutConstraint.Attribute.leading,
-                               relatedBy: NSLayoutConstraint.Relation.equal,
+                               attribute: .leading,
+                               relatedBy: .equal,
                                toItem: self.view,
-                               attribute: NSLayoutConstraint.Attribute.leading,
+                               attribute: .leading,
                                multiplier: 1.0,
                                constant: 0)
         
@@ -62,10 +62,10 @@ class LoginMovieViewController: UIViewController {
         
         let blurViewBottomConstraint =
             NSLayoutConstraint(item: blurView as Any,
-                               attribute: NSLayoutConstraint.Attribute.bottom,
-                               relatedBy: NSLayoutConstraint.Relation.equal,
+                               attribute: .bottom,
+                               relatedBy: .equal,
                                toItem: self.view,
-                               attribute: NSLayoutConstraint.Attribute.bottom,
+                               attribute: .bottom,
                                multiplier: 1.0,
                                constant: 0)
         
@@ -74,10 +74,10 @@ class LoginMovieViewController: UIViewController {
         
         let blurViewTralingConstraint =
             NSLayoutConstraint(item: blurView as Any,
-                               attribute: NSLayoutConstraint.Attribute.trailing,
-                               relatedBy: NSLayoutConstraint.Relation.equal,
+                               attribute: .trailing,
+                               relatedBy: .equal,
                                toItem: self.view,
-                               attribute: NSLayoutConstraint.Attribute.trailing,
+                               attribute: .trailing,
                                multiplier: 1.0,
                                constant: 0)
         
@@ -112,15 +112,5 @@ class LoginMovieViewController: UIViewController {
         player.pause()
         
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

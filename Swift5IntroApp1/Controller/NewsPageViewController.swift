@@ -43,17 +43,20 @@ class NewsPageViewController: UITableViewController, SegementSlideContentScrollV
         //画像をtableViewの下に置く
         //画像を呼び出す
         let image = UIImage(named: imageName)
+        
         //イメージビューを生成する
-        let imageView = UIImageView(frame: CGRect(x: 0,
-                                                  y: 0,
-                                                  width: self.tableView.bounds.size.width,
-                                                  height: self.tableView.bounds.size.height))
+        let imageView = UIImageView(frame: CGRect.zero)
         
         //イメージビューに画像をセットする
         imageView.image = image
         
         //tableViewの背景にイメージビューをセットする
         self.tableView.backgroundView = imageView
+        
+        imageView.topAnchor.constraint(equalTo: self.tableView.topAnchor).isActive = true
+        imageView.leadingAnchor.constraint(equalTo: self.tableView.leadingAnchor).isActive = true
+        imageView.trailingAnchor.constraint(equalTo: self.tableView.trailingAnchor).isActive = true
+        imageView.bottomAnchor.constraint(equalTo: self.tableView.bottomAnchor).isActive = true
         
         //XMLパース
         let url = URL(string: urlString)!
