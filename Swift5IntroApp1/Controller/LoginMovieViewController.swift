@@ -10,17 +10,44 @@
 import UIKit
 import AVFoundation
 
-class LoginMovieViewController: UIViewController {
+class LoginMovieViewController: UIViewController{
     
     @IBOutlet weak var blurView: UIVisualEffectView!
     
     var player = AVPlayer()
-    let path = Bundle.main.path(forResource: "start", ofType: "mov")
-
+    var playerLayer = AVPlayerLayer()
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        let path = Bundle.main.path(forResource: "start", ofType: "mov")
+        player = AVPlayer(url: URL(fileURLWithPath: path!))
 
+        playerLayer = AVPlayerLayer(player: player)
+
+        playerLayer.frame = view.bounds
+
+        print(view.bounds)
+
+        playerLayer.zPosition = -1
+        playerLayer.repeatCount = 0
+        playerLayer.videoGravity = .resizeAspectFill
+        playerLayer.needsDisplayOnBoundsChange = true
+        playerLayer.player?.isMuted = true
+        
+        
+        view.layer.insertSublayer(playerLayer, at: 0)
+
+        NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: playerLayer.player?.currentItem, queue: .main){(_)in
+
+            self.player.seek(to: .zero)
+            self.player.play()
+        }
+
+        
+        self.player.play()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,7 +56,7 @@ class LoginMovieViewController: UIViewController {
         
         self.navigationController?.isNavigationBarHidden = false
         
-        setUpMoviePlayer()
+        
         
     }
     
@@ -83,33 +110,16 @@ class LoginMovieViewController: UIViewController {
         
         self.view.addConstraint(blurViewTralingConstraint)
         
+        playerLayer.frame = view.bounds
         
-        
-    }
-    
-    func setUpMoviePlayer(){
-        
-        player = AVPlayer(url: URL(fileURLWithPath: path!))
-        
-        //AVPlayer用のレイヤー作成
-        let playerLayer = AVPlayerLayer(player: player)
-        playerLayer.frame = CGRect(x: 0,
-                                   y: 0,
-                                   width: view.frame.size.width,
-                                   height: view.frame.size.height)
-        playerLayer.videoGravity = .resizeAspectFill
-        playerLayer.repeatCount = 0
-        playerLayer.zPosition = -1
-        view.layer.insertSublayer(playerLayer, at: 0)
-        
-        self.player.isMuted = true
         self.player.play()
         
     }
     
     @IBAction func login(_ sender: Any) {
         
-        player.pause()
+        self.player.pause()
+        
         
     }
 

@@ -26,7 +26,9 @@ class IntroViewController: UIViewController, UIScrollViewDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // ボタンの横幅に応じてフォントサイズを自動調整する設定
+            skipButton.titleLabel?.adjustsFontSizeToFitWidth = true
         //ページングしたいのでTrueに設定
         scrollView.isPagingEnabled = true
         
@@ -35,7 +37,7 @@ class IntroViewController: UIViewController, UIScrollViewDelegate{
         
         animationLottie()
         
-        
+                
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -87,6 +89,19 @@ class IntroViewController: UIViewController, UIScrollViewDelegate{
                                                             multiplier: 0.1,
                                                             constant: 0)
         self.view.addConstraint(skipButtonHeightConstraint)
+        
+        
+        
+        removeAllSubViews(parentView: scrollView)
+        setUpScroll()
+        animationLottie()
+    }
+    
+    func removeAllSubViews(parentView:UIView){
+        let subviews = parentView.subviews
+        for subview in subviews {
+            subview.removeFromSuperview()
+        }
     }
     
     

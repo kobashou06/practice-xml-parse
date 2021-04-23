@@ -11,7 +11,7 @@
         <!--Intro View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="IntroViewController" customModule="Swift5IntroApp1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="intro" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="IntroViewController" customModule="Swift5IntroApp1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,12 +22,14 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="xYj-qa-kTR"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="RZX-Up-drQ"/>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5l6-i6-bRW">
-                                <rect key="frame" x="162" y="138" width="90" height="39"/>
+                            <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5l6-i6-bRW">
+                                <rect key="frame" x="46" y="139" width="82" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemRedColor"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="スキップ">
                                     <color key="titleColor" systemColor="labelColor"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                 </state>
                                 <connections>
                                     <segue destination="mYF-vp-ZsK" kind="show" id="J3U-jg-nu7"/>
@@ -36,10 +38,6 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="5l6-i6-bRW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="koA-mC-gpy"/>
-                            <constraint firstItem="5l6-i6-bRW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="mCN-8X-KuS"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="TUH-3H-GLC"/>
                     <connections>
@@ -69,10 +67,7 @@
                                 <blurEffect style="regular"/>
                             </visualEffectView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NEi-tT-fHs">
-                                <rect key="frame" x="159" y="282" width="96" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="NEi-tT-fHs" secondAttribute="height" multiplier="2:1" id="DGv-ej-4ty"/>
-                                </constraints>
+                                <rect key="frame" x="159" y="332" width="96" height="48"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -91,10 +86,11 @@
                         <viewLayoutGuide key="safeArea" id="onL-I2-Gf4"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="BUH-iN-avZ" secondAttribute="trailing" id="3FH-Hf-Dzl"/>
+                            <constraint firstItem="BUH-iN-avZ" firstAttribute="top" secondItem="NEi-tT-fHs" secondAttribute="bottom" constant="50" id="AFr-ys-kRb"/>
                             <constraint firstItem="NEi-tT-fHs" firstAttribute="centerX" secondItem="zSk-lF-1uY" secondAttribute="centerX" id="X6z-tR-eov"/>
                             <constraint firstItem="BUH-iN-avZ" firstAttribute="leading" secondItem="zSk-lF-1uY" secondAttribute="leadingMargin" id="dV9-yd-4px"/>
                             <constraint firstItem="BUH-iN-avZ" firstAttribute="centerY" secondItem="zSk-lF-1uY" secondAttribute="centerY" id="hdf-ZJ-5zA"/>
-                            <constraint firstItem="BUH-iN-avZ" firstAttribute="top" secondItem="NEi-tT-fHs" secondAttribute="bottom" constant="100" id="ibd-O6-Nvn"/>
+                            <constraint firstItem="NEi-tT-fHs" firstAttribute="width" secondItem="zSk-lF-1uY" secondAttribute="width" multiplier="0.231884" id="kle-wX-yrm"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bNP-gK-EuK"/>
