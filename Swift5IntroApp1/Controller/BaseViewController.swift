@@ -26,14 +26,13 @@ class BaseViewController: SegementSlideDefaultViewController{
     }
 
     
-    //この辺りの理解がまだ少し弱いです。ビューやボタンの配置（AutoLayout）について学習を進めます
     override func segementSlideHeaderView() -> UIView {
 
         let headerView = UIImageView()
 
         headerView.isUserInteractionEnabled = true
 
-        headerView.contentMode = .scaleAspectFill
+        headerView.contentMode = .scaleToFill
 
         headerView.image = UIImage(named: "header")
 
