@@ -21,9 +21,9 @@
 		CE47D0F626294BC5009F0B82 /* 1.json in Resources */ = {isa = PBXBuildFile; fileRef = CE47D0F126294BC5009F0B82 /* 1.json */; };
 		CE47D0F726294BC5009F0B82 /* 3.json in Resources */ = {isa = PBXBuildFile; fileRef = CE47D0F226294BC5009F0B82 /* 3.json */; };
 		CE47D0FB26294C48009F0B82 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE47D0FA26294C48009F0B82 /* IntroViewController.swift */; };
+		CE58CE102632C8BD00968EAD /* JSONModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE58CE0F2632C8BD00968EAD /* JSONModel.swift */; };
 		CEB074602629B84C000E9D0F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB0745F2629B84C000E9D0F /* BaseViewController.swift */; };
 		CEB074672629BB7C000E9D0F /* NewsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB074662629BB7C000E9D0F /* NewsPageViewController.swift */; };
-		CEB0746A2629C9D0000E9D0F /* NewsItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB074692629C9D0000E9D0F /* NewsItems.swift */; };
 		CEB0746D2629D0D0000E9D0F /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB0746C2629D0D0000E9D0F /* WebViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,9 +45,9 @@
 		CE47D0F126294BC5009F0B82 /* 1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 1.json; sourceTree = "<group>"; };
 		CE47D0F226294BC5009F0B82 /* 3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 3.json; sourceTree = "<group>"; };
 		CE47D0FA26294C48009F0B82 /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
+		CE58CE0F2632C8BD00968EAD /* JSONModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONModel.swift; sourceTree = "<group>"; };
 		CEB0745F2629B84C000E9D0F /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		CEB074662629BB7C000E9D0F /* NewsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPageViewController.swift; sourceTree = "<group>"; };
-		CEB074692629C9D0000E9D0F /* NewsItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewsItems.swift; path = Swift5IntroApp1/Model/NewsItems.swift; sourceTree = SOURCE_ROOT; };
 		CEB0746C2629D0D0000E9D0F /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		DB2CACB753C081A9A16EEBD8 /* Pods-Swift5IntroApp1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swift5IntroApp1.release.xcconfig"; path = "Target Support Files/Pods-Swift5IntroApp1/Pods-Swift5IntroApp1.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,7 +119,7 @@
 		CE47D0EB26294B17009F0B82 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CEB074692629C9D0000E9D0F /* NewsItems.swift */,
+				CE58CE0F2632C8BD00968EAD /* JSONModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -269,9 +269,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEB074602629B84C000E9D0F /* BaseViewController.swift in Sources */,
-				CEB0746A2629C9D0000E9D0F /* NewsItems.swift in Sources */,
 				CE47D0FB26294C48009F0B82 /* IntroViewController.swift in Sources */,
 				CE3C1B4526296BEF0040C259 /* LoginMovieViewController.swift in Sources */,
+				CE58CE102632C8BD00968EAD /* JSONModel.swift in Sources */,
 				CE0C11B1262421D700D24B86 /* AppDelegate.swift in Sources */,
 				CEB074672629BB7C000E9D0F /* NewsPageViewController.swift in Sources */,
 				CE0C11B3262421D700D24B86 /* SceneDelegate.swift in Sources */,

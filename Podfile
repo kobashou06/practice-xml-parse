@@ -10,5 +10,7 @@ target 'Swift5IntroApp1' do
   pod 'lottie-ios'
   pod 'SegementSlide'
   pod 'ImpressiveNotifications'
+  pod 'SwiftyJSON'
+  pod 'Alamofire'
 
 end

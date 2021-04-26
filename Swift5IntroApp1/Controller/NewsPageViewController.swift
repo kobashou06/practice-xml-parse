@@ -9,24 +9,16 @@
 
 import UIKit
 import SegementSlide
+import Alamofire
+import SwiftyJSON
 
-class NewsPageViewController: UITableViewController, SegementSlideContentScrollViewDelegate,XMLParserDelegate{
+class NewsPageViewController: UITableViewController, SegementSlideContentScrollViewDelegate{
     
-    //XMLパーサーインスタンス生成
-    var parser = XMLParser()
+    var jsonDataArray = [JSONModel]()
     
-    //XMLパース中の現在の要素名
-    var currentElementName: String!
+    var urlString:String?
     
-    //ニュース記事の配列
-    var newsItems = [NewsItems]()
-    
-    //画像名とURLを外部から受け取る
-    var imageName:String
-    var urlString:String
-    
-    init(imageName: String, urlString: String){
-        self.imageName = imageName
+    init(urlString: String){
         self.urlString = urlString
         super.init(nibName: nil, bundle: nil)
     }
@@ -34,39 +26,15 @@ class NewsPageViewController: UITableViewController, SegementSlideContentScrollV
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-
-        tableView.backgroundColor = .clear
-        
-        //画像をtableViewの下に置く
-        //画像を呼び出す
-        let image = UIImage(named: imageName)
-        
-        //イメージビューを生成する
-        let imageView = UIImageView(frame: CGRect.zero)
-        
-        //イメージビューに画像をセットする
-        imageView.image = image
-        
-        //tableViewの背景にイメージビューをセットする
-        self.tableView.backgroundView = imageView
-        
-        imageView.topAnchor.constraint(equalTo: self.tableView.topAnchor).isActive = true
-        imageView.leadingAnchor.constraint(equalTo: self.tableView.leadingAnchor).isActive = true
-        imageView.trailingAnchor.constraint(equalTo: self.tableView.trailingAnchor).isActive = true
-        imageView.bottomAnchor.constraint(equalTo: self.tableView.bottomAnchor).isActive = true
-        
-        //XMLパース
-        let url = URL(string: urlString)!
-        parser = XMLParser(contentsOf: url)!
-        parser.delegate = self
-        parser.parse()
-        
+        request()
+        print(self.jsonDataArray)
         
     }
-    
+
     @objc var scrollView: UIScrollView{
         return tableView
     }
@@ -79,141 +47,84 @@ class NewsPageViewController: UITableViewController, SegementSlideContentScrollV
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return newsItems.count
+        return jsonDataArray.count
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return view.frame.size.height / 5
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
         
-        cell.backgroundColor = .clear
+        let article = self.jsonDataArray[indexPath.row]
         
-        let newsItems = self.newsItems[indexPath.row]
-        
-        cell.textLabel?.text = newsItems.title
+        cell.backgroundColor = .systemGreen
+        cell.textLabel?.text = article.title
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 15.0)
-        cell.textLabel?.textColor = .white
+        cell.textLabel?.textColor = .black
         cell.textLabel?.numberOfLines = 3
+            
+        cell.detailTextLabel?.text = article.url
+        cell.detailTextLabel?.textColor = .black
         
-        cell.detailTextLabel?.text = newsItems.url
-        cell.detailTextLabel?.textColor = .white
-
         return cell
-    }
-    
-    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
-        
-        currentElementName = nil
-        if elementName == "item"{
-            
-            self.newsItems.append(NewsItems())
-            
-            //
-        
-        }else{
-            
-            currentElementName = elementName
-            
-        }
-    }
-    
-    func parser(_ parser: XMLParser, foundCharacters string: String) {
-        
-        if self.newsItems.count > 0{
-            
-            let lastItem = self.newsItems[self.newsItems.count - 1]
-            
-            switch self.currentElementName{
-            
-            case "title":
-                lastItem.title = string
-                
-            case "link":
-                lastItem.url = string
-                
-            case "pubDate":
-                lastItem.pubDate = string
-                    
-            default:break
-            }
-            
-        }
-    }
-    
-    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-        
-        self.currentElementName = nil
-    
-    }
-    
-    func parserDidEndDocument(_ parser: XMLParser) {
-        
-        self.tableView.reloadData()
         
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         //WKWebViewControllerにURLを渡して表示
-        //今回はSegueを使わない
+
         let webViewController = WebViewController()
         webViewController.modalTransitionStyle = .crossDissolve
-        let newsItem = newsItems[indexPath.row]
-        UserDefaults.standard.set(newsItem.url, forKey: "url")
+        let article = jsonDataArray[indexPath.row]
+        UserDefaults.standard.set(article.url, forKey: "url")
         present(webViewController, animated: true, completion: nil)
         
     }
     
+    func request() {
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+        AF.request(urlString! as URLConvertible , method: .get,encoding: JSONEncoding.default).responseJSON{(response) in
+            switch response.result{
+            case .success:
+                do{
+                    
+                    let json:JSON = try JSON(data: response.data!)
+                    var totalHitCount = json.count
+                    
+                    if totalHitCount > 50{
+                        totalHitCount = 50
+                    }
+                    
+                    for i in 0...totalHitCount - 1 {
+                        
+                        if json[i]["title"] != "" && json[i]["url"] != "" {
+                            
+                            let item = JSONModel(title: json[i]["title"].string, url: json[i]["url"].string)
+                            self.jsonDataArray.append(item)
+                           
+                        }else{
+                            print("何かしらが空です")
+                        }
+                    }
+                    
+                }catch{
+                    print("error")
+                }
+                
+                break
+                
+            case .failure:break
+                
+            }
+            
+            self.tableView.reloadData()
+            
+        }
+        
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }

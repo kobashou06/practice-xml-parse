@@ -7,6 +7,8 @@ import ImpressiveNotifications
 
 class BaseViewController: SegementSlideDefaultViewController{
 
+    let words = ["Swift","CocoaPods","Carthage","Xcode","SwiftUI","アーキテクチャ"]
+    
     override func viewDidLoad() {
 
         super.viewDidLoad()
@@ -31,11 +33,8 @@ class BaseViewController: SegementSlideDefaultViewController{
         let headerView = UIImageView()
 
         headerView.isUserInteractionEnabled = true
-
         headerView.contentMode = .scaleToFill
-
         headerView.image = UIImage(named: "header")
-
         headerView.translatesAutoresizingMaskIntoConstraints = false
 
         let headerHeight: CGFloat
@@ -57,61 +56,39 @@ class BaseViewController: SegementSlideDefaultViewController{
     }
 
     override var titlesInSwitcher: [String] {
-
-        //教材とは違う記事を選定しました
-        return ["TOP","Abema TIMES","Yahoo! JAPAN クリエイターズプログラム","IT","BuzzFeed Japan","CNN.co.jp"]
-
+        return words
     }
-
-
-
-
-    //教材ではニュースページごとにコントローラーが分かれていたが、Switchでひとまとめにした
+    
     override func segementSlideContentViewController(at index: Int) -> SegementSlideContentScrollViewDelegate? {
 
-        let imageName:String
         let urlString:String
 
         switch index {
 
         case 0:
-
-            imageName = "0"
-            urlString = "https://news.yahoo.co.jp/rss/topics/top-picks.xml"
+            urlString = "https://qiita.com/api/v2/items?query=\(words[0])"
 
         case 1:
-
-            imageName = "1"
-            urlString = "https://news.yahoo.co.jp/rss/media/abema/all.xml"
+            urlString = "https://qiita.com/api/v2/items?query=\(words[1])"
 
         case 2:
-
-            imageName = "2"
-            urlString = "https://news.yahoo.co.jp/rss/media/ycreatp/all.xml"
+            urlString = "https://qiita.com/api/v2/items?query=\(words[2])"
 
         case 3:
-
-            imageName = "3"
-            urlString = "https://news.yahoo.co.jp/rss/topics/it.xml"
+            urlString = "https://qiita.com/api/v2/items?query=\(words[3])"
 
         case 4:
-
-            imageName = "4"
-            urlString = "https://news.yahoo.co.jp/rss/media/bfj/all.xml"
+            urlString = "https://qiita.com/api/v2/items?query=\(words[4])"
 
         case 5:
-
-            imageName = "5"
-            urlString = "https://news.yahoo.co.jp/rss/media/cnn/all.xml"
+            urlString = "https://qiita.com/api/v2/items?query=\(words[5])"
 
         default:
-
-            imageName = "0"
-            urlString = "https://news.yahoo.co.jp/rss/topics/top-picks.xml"
+            urlString = "https://qiita.com/api/v2/items?query=\(words[0])"
 
         }
 
-        return NewsPageViewController(imageName: imageName, urlString: urlString)
+        return NewsPageViewController(urlString: urlString)
 
     }
 
