@@ -5,7 +5,7 @@ import ImpressiveNotifications
 //ニュース記事一覧画面
 
 
-class BaseViewController: SegementSlideDefaultViewController{
+class BaseViewController: SegementSlideDefaultViewController {
 
     let words = ["Swift","CocoaPods","Carthage","Xcode","SwiftUI","アーキテクチャ"]
     

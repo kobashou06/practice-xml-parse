@@ -10,7 +10,7 @@
 import UIKit
 import Lottie
 
-class IntroViewController: UIViewController, UIScrollViewDelegate{
+class IntroViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
     

@@ -12,7 +12,7 @@ import SegementSlide
 import Alamofire
 import SwiftyJSON
 
-class NewsPageViewController: UITableViewController, SegementSlideContentScrollViewDelegate{
+class NewsPageViewController: UITableViewController, SegementSlideContentScrollViewDelegate {
     
     var jsonDataArray = [JSONModel]()
     

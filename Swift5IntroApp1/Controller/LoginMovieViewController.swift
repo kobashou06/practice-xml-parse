@@ -10,7 +10,7 @@
 import UIKit
 import AVFoundation
 
-class LoginMovieViewController: UIViewController{
+class LoginMovieViewController: UIViewController {
     
     @IBOutlet weak var blurView: UIVisualEffectView!
     
