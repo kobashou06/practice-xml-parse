@@ -23,19 +23,13 @@ class LoginMovieViewController: UIViewController {
         
         let path = Bundle.main.path(forResource: "start", ofType: "mov")
         player = AVPlayer(url: URL(fileURLWithPath: path!))
-
         playerLayer = AVPlayerLayer(player: player)
-
         playerLayer.frame = view.bounds
-
-        print(view.bounds)
-
         playerLayer.zPosition = -1
         playerLayer.repeatCount = 0
         playerLayer.videoGravity = .resizeAspectFill
         playerLayer.needsDisplayOnBoundsChange = true
         playerLayer.player?.isMuted = true
-        
         
         view.layer.insertSublayer(playerLayer, at: 0)
 
@@ -45,7 +39,6 @@ class LoginMovieViewController: UIViewController {
             self.player.play()
         }
 
-        
         self.player.play()
         
     }
@@ -53,11 +46,8 @@ class LoginMovieViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
-        
         self.navigationController?.isNavigationBarHidden = false
-        
-        
-        
+
     }
     
     override func viewDidLayoutSubviews() {
@@ -98,7 +88,6 @@ class LoginMovieViewController: UIViewController {
         
         self.view.addConstraint(blurViewBottomConstraint)
         
-        
         let blurViewTralingConstraint =
             NSLayoutConstraint(item: blurView as Any,
                                attribute: .trailing,
@@ -119,7 +108,6 @@ class LoginMovieViewController: UIViewController {
     @IBAction func login(_ sender: Any) {
         
         self.player.pause()
-        
         
     }
 

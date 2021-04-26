@@ -31,7 +31,6 @@ class NewsPageViewController: UITableViewController, SegementSlideContentScrollV
         
         super.viewDidLoad()
         request()
-        print(self.jsonDataArray)
         
     }
 

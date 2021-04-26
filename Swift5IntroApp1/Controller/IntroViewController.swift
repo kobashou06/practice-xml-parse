@@ -22,21 +22,18 @@ class IntroViewController: UIViewController, UIScrollViewDelegate {
     //アニメーションの下に表示される文字列の配列
     var onboardStringArray = ["aaaa","iiii","uuuu","eeee","oooo"]
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // ボタンの横幅に応じてフォントサイズを自動調整する設定
-            skipButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        skipButton.titleLabel?.adjustsFontSizeToFitWidth = true
         //ページングしたいのでTrueに設定
         scrollView.isPagingEnabled = true
-        
+
         //アニメーション置き場生成
         setUpScroll()
         
         animationLottie()
-        
                 
     }
     
@@ -45,7 +42,6 @@ class IntroViewController: UIViewController, UIScrollViewDelegate {
         
         //ナビゲーションバーを消す
         self.navigationController?.isNavigationBarHidden = true
-        
         
     }
     
@@ -90,11 +86,10 @@ class IntroViewController: UIViewController, UIScrollViewDelegate {
                                                             constant: 0)
         self.view.addConstraint(skipButtonHeightConstraint)
         
-        
-        
         removeAllSubViews(parentView: scrollView)
         setUpScroll()
         animationLottie()
+        
     }
     
     func removeAllSubViews(parentView:UIView){
@@ -103,7 +98,6 @@ class IntroViewController: UIViewController, UIScrollViewDelegate {
             subview.removeFromSuperview()
         }
     }
-    
     
     func setUpScroll(){
         
@@ -115,7 +109,6 @@ class IntroViewController: UIViewController, UIScrollViewDelegate {
         scrollView.contentSize = CGSize(width: view.bounds.size.width
                                             * CGFloat(onboardArray.count),
                                         height: view.bounds.size.height)
-        print(onboardStringArray.count)
         
         for i in 0...4{
             
@@ -124,7 +117,6 @@ class IntroViewController: UIViewController, UIScrollViewDelegate {
                                                      width: scrollView.bounds.size.width,
                                                      height: scrollView.bounds.size.height))
             
-//            onboardLabel.backgroundColor = .red
             onboardLabel.textAlignment = .center
             onboardLabel.text = onboardStringArray[i]
             onboardLabel.font = UIFont.boldSystemFont(ofSize: 15.0)
@@ -134,7 +126,6 @@ class IntroViewController: UIViewController, UIScrollViewDelegate {
             
         }
         
-//        scrollView.backgroundColor = .blue
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         
         //scrollViewの制約
@@ -149,7 +140,6 @@ class IntroViewController: UIViewController, UIScrollViewDelegate {
         scrollView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 1).isActive = true
         
     }
-    
     
     fileprivate func animationLottie() {
         //Lottieを使ってアニメーションさせる
@@ -166,10 +156,7 @@ class IntroViewController: UIViewController, UIScrollViewDelegate {
             animationView.loopMode = .loop
             animationView.play()
             scrollView.addSubview(animationView)
-        
-            
-            
-            
+
         }
         
     }
