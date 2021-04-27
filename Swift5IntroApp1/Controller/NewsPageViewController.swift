@@ -33,6 +33,11 @@ class NewsPageViewController: UITableViewController, SegementSlideContentScrollV
         request()
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
+        request()
+    }
 
     @objc var scrollView: UIScrollView{
         return tableView
@@ -77,7 +82,9 @@ class NewsPageViewController: UITableViewController, SegementSlideContentScrollV
         let article = jsonDataArray[indexPath.row]
         UserDefaults.standard.set(article.url, forKey: "url")
         let webView = WebViewController()
-        self.navigationController?.pushViewController(webView, animated: true)
+        webView.modalTransitionStyle = .crossDissolve
+        present(webView, animated: true, completion: nil)
+//        self.navigationController?.pushViewController(webView, animated: true)
 
     }
     
