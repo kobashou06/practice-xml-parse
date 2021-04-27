@@ -73,15 +73,12 @@ class NewsPageViewController: UITableViewController, SegementSlideContentScrollV
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        //WKWebViewControllerにURLを渡して表示
 
-        let webViewController = WebViewController()
-        webViewController.modalTransitionStyle = .crossDissolve
         let article = jsonDataArray[indexPath.row]
         UserDefaults.standard.set(article.url, forKey: "url")
-        present(webViewController, animated: true, completion: nil)
-        
+        let webView = WebViewController()
+        self.navigationController?.pushViewController(webView, animated: true)
+
     }
     
     func request() {

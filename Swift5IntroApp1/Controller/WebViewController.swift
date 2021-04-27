@@ -12,14 +12,23 @@ import WebKit
 
 class WebViewController: UIViewController,WKUIDelegate {
     
+    @IBOutlet weak var backButton: UIButton!
+    
     var webView = WKWebView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        webView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height - 50)
+        
+        edgesForExtendedLayout = []
         
         view.addSubview(webView)
+        
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        
+        webView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        webView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        webView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        webView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
         
         let urlString = UserDefaults.standard.object(forKey: "url")
         let url = URL(string: urlString as! String)
@@ -27,6 +36,14 @@ class WebViewController: UIViewController,WKUIDelegate {
         webView.load(request)
         
     }
+    
+    @IBAction func back(_ sender: UIButton) {
+//        let baseViewController = BaseViewController()
+//        baseViewController.modalPresentationStyle = .fullScreen
+//        present(baseViewController, animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
+    }
+    
     
 
     /*
