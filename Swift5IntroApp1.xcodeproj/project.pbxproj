@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -21,6 +21,7 @@
 		CE47D0F626294BC5009F0B82 /* 1.json in Resources */ = {isa = PBXBuildFile; fileRef = CE47D0F126294BC5009F0B82 /* 1.json */; };
 		CE47D0F726294BC5009F0B82 /* 3.json in Resources */ = {isa = PBXBuildFile; fileRef = CE47D0F226294BC5009F0B82 /* 3.json */; };
 		CE47D0FB26294C48009F0B82 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE47D0FA26294C48009F0B82 /* IntroViewController.swift */; };
+		CE47FCDA263BDEB100DDC1A6 /* Alamofire.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE47FCD9263BDEB100DDC1A6 /* Alamofire.xcframework */; };
 		CE58CE102632C8BD00968EAD /* JSONModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE58CE0F2632C8BD00968EAD /* JSONModel.swift */; };
 		CEB074602629B84C000E9D0F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB0745F2629B84C000E9D0F /* BaseViewController.swift */; };
 		CEB074672629BB7C000E9D0F /* NewsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB074662629BB7C000E9D0F /* NewsPageViewController.swift */; };
@@ -45,6 +46,7 @@
 		CE47D0F126294BC5009F0B82 /* 1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 1.json; sourceTree = "<group>"; };
 		CE47D0F226294BC5009F0B82 /* 3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 3.json; sourceTree = "<group>"; };
 		CE47D0FA26294C48009F0B82 /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
+		CE47FCD9263BDEB100DDC1A6 /* Alamofire.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Alamofire.xcframework; path = Carthage/Build/Alamofire.xcframework; sourceTree = "<group>"; };
 		CE58CE0F2632C8BD00968EAD /* JSONModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONModel.swift; sourceTree = "<group>"; };
 		CEB0745F2629B84C000E9D0F /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		CEB074662629BB7C000E9D0F /* NewsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPageViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE47FCDA263BDEB100DDC1A6 /* Alamofire.xcframework in Frameworks */,
 				0DD06C58047C7FE84252F275 /* Pods_Swift5IntroApp1.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,6 +79,7 @@
 		C8BF73DE33EF6D81B1F2DF24 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE47FCD9263BDEB100DDC1A6 /* Alamofire.xcframework */,
 				35C9D103E8C377D264FB49FE /* Pods_Swift5IntroApp1.framework */,
 			);
 			name = Frameworks;

@@ -1,12 +1,10 @@
 PODS:
-  - Alamofire (5.4.3)
   - ImpressiveNotifications (0.5.0)
   - lottie-ios (3.2.1)
   - SegementSlide (3.0.1)
   - SwiftyJSON (5.0.1)
 
 DEPENDENCIES:
-  - Alamofire
   - ImpressiveNotifications
   - lottie-ios
   - SegementSlide
@@ -14,19 +12,17 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - Alamofire
     - ImpressiveNotifications
     - lottie-ios
     - SegementSlide
     - SwiftyJSON
 
 SPEC CHECKSUMS:
-  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   ImpressiveNotifications: 9a3921276e916e244abb7e4b2a6661133479a17c
   lottie-ios: 106e92eaf11fbed0a76590b4cdb9b5ec26123ff7
   SegementSlide: 83b56ffb66b9c0edc4e4f2a74229309c62915db3
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: 52ff2dd35f9164a5d55612141123113e22cb09b5
+PODFILE CHECKSUM: 487b820fead284952bd7e8ca4c2b59ede903ddc1
 
 COCOAPODS: 1.10.1
