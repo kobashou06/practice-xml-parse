@@ -10,18 +10,41 @@
 import UIKit
 import WebKit
 
-class WebViewController: UIViewController,WKUIDelegate {
+class WebViewController: UIViewController,WKUIDelegate, WKNavigationDelegate {
     
+    var headerView = UIView()
     var webView = WKWebView()
     var backButton = UIButton()
+    var headerHeight: CGFloat = 0.0
 
+    fileprivate func setupHeader(){
+
+        if #available(iOS 11.0, *) {
+            print("true")
+            print(view.bounds.size.height)
+            headerHeight = (view.bounds.size.height / 14)
+
+        } else {
+            print("false")
+            print(view.bounds.size.height)
+            headerHeight = (view.bounds.size.height / 14)
+
+        }
+
+        headerView.backgroundColor = .systemGray
+        headerView.translatesAutoresizingMaskIntoConstraints = false
+        headerView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        headerView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        headerView.heightAnchor.constraint(equalToConstant: headerHeight).isActive = true
+
+    }
+    
     //Webサイト表示画面
     fileprivate func setupWebView() {
-
-        view.addSubview(webView)
         
         webView.translatesAutoresizingMaskIntoConstraints = false
-        webView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        webView.topAnchor.constraint(equalTo: view.topAnchor,constant: headerHeight).isActive = true
         webView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         webView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         webView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
@@ -31,30 +54,25 @@ class WebViewController: UIViewController,WKUIDelegate {
     //記事リストへ戻るボタン
     fileprivate func setupBackButton() {
         
-        backButton.setTitle("Back", for: .normal)
+        backButton.setTitle("< 戻る", for: .normal)
         // ボタンのフォントサイズ
-        backButton.titleLabel?.font =  UIFont.systemFont(ofSize: 36)
-        backButton.setTitleColor(UIColor.systemGreen, for: .normal)
+        backButton.titleLabel?.font =  UIFont.boldSystemFont(ofSize: 18)
+        backButton.setTitleColor(UIColor.green, for: .normal)
         backButton.layer.cornerRadius = 10
         
         backButton.titleLabel?.adjustsFontSizeToFitWidth = true
-        
-        // 背景色
-        backButton.backgroundColor = UIColor.init(red:0.9, green: 0.9, blue: 0.9, alpha: 1)
         
         // タップされたときのaction
         backButton.addTarget(self,
                              action: #selector(self.buttonTapped(_:)),
                              for: .touchUpInside)
         
-        webView.addSubview(backButton)
-        
         backButton.translatesAutoresizingMaskIntoConstraints = false
-        backButton.topAnchor.constraint(equalTo: webView.topAnchor).isActive = true
-        backButton.leadingAnchor.constraint(equalTo: webView.leadingAnchor,constant: 10).isActive = true
-        backButton.widthAnchor.constraint(equalTo: webView.widthAnchor,multiplier: 0.3).isActive = true
-        backButton.heightAnchor.constraint(equalTo: webView.heightAnchor,multiplier: 0.1).isActive = true
         
+        backButton.topAnchor.constraint(equalTo: headerView.topAnchor).isActive = true
+        backButton.leadingAnchor.constraint(equalTo: headerView.leadingAnchor,constant: 5).isActive = true
+        backButton.widthAnchor.constraint(equalTo: headerView.widthAnchor,multiplier: 0.2).isActive = true
+        backButton.heightAnchor.constraint(equalToConstant: headerHeight).isActive = true
         
     }
     
@@ -65,13 +83,19 @@ class WebViewController: UIViewController,WKUIDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        view.addSubview(headerView)
+        view.addSubview(webView)
+        view.addSubview(backButton)
         
+        setupHeader()
         setupWebView()
         setupBackButton()
         
         let urlString = UserDefaults.standard.object(forKey: "url")
         let url = URL(string: urlString as! String)
         let request = URLRequest(url: url!)
+        
         webView.load(request)
         
     }

@@ -82,9 +82,8 @@ class NewsPageViewController: UITableViewController, SegementSlideContentScrollV
         let article = jsonDataArray[indexPath.row]
         UserDefaults.standard.set(article.url, forKey: "url")
         let webView = WebViewController()
-        webView.modalTransitionStyle = .crossDissolve
+        webView.modalTransitionStyle = .coverVertical
         present(webView, animated: true, completion: nil)
-//        self.navigationController?.pushViewController(webView, animated: true)
 
     }
     
