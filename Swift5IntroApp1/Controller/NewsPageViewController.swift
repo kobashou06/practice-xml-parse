@@ -78,12 +78,18 @@ class NewsPageViewController: UITableViewController, SegementSlideContentScrollV
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        
         let article = jsonDataArray[indexPath.row]
         UserDefaults.standard.set(article.url, forKey: "url")
-        let webView = WebViewController()
-        webView.modalTransitionStyle = .coverVertical
-        present(webView, animated: true, completion: nil)
+        
+        //１：遷移先の設定
+        let nextPageController: WebViewController = WebViewController()
+        //２：トランジションの指定
+        nextPageController.modalTransitionStyle = .coverVertical
+        //３：ナビゲーションコントローラーを生成
+        let navigationController = UINavigationController(rootViewController: nextPageController)
+        //４：次の画面へGO
+        self.present(navigationController, animated: true, completion: nil)
 
     }
     
