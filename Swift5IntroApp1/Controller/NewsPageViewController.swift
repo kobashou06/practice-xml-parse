@@ -89,7 +89,7 @@ class NewsPageViewController: UITableViewController, SegementSlideContentScrollV
         //３：ナビゲーションコントローラーを生成
         let navigationController = UINavigationController(rootViewController: nextPageController)
         //４：次の画面へGO
-        self.present(navigationController, animated: true, completion: nil)
+        present(navigationController, animated: true, completion: nil)
 
     }
     

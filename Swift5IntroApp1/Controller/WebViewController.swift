@@ -32,7 +32,7 @@ class WebViewController: UIViewController,WKUIDelegate, WKNavigationDelegate {
         
         //１：サイドメニューバーボタンを生成
         let sideMenuBarButtonItem: UIBarButtonItem =
-            UIBarButtonItem(title:"< back", style: .plain, target: self, action: #selector(back(_:)))
+            UIBarButtonItem(image:UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(close(_:)))
         //２：生成したボタンを、ナビゲーションバー左部分に配置
         self.navigationItem.setLeftBarButtonItems([sideMenuBarButtonItem], animated: true)
         
@@ -51,13 +51,13 @@ class WebViewController: UIViewController,WKUIDelegate, WKNavigationDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let nc = self.presentingViewController as! UINavigationController
-        nc.isNavigationBarHidden = false
+        let webViewNavigationController = self.presentingViewController as! UINavigationController
+        webViewNavigationController.isNavigationBarHidden = false
         
     }
     
     //ナビゲーションバーボタンが押された時に実行される
-    @objc func back(_ sender: UIBarButtonItem){
+    @objc func close(_ sender: UIBarButtonItem){
         //現在の画面を破棄する
         dismiss(animated: true, completion: nil)
     }
