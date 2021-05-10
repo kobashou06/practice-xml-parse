@@ -62,7 +62,7 @@ class NewsPageViewController: UITableViewController, SegementSlideContentScrollV
         
         let cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
         
-        let article = self.jsonDataArray[indexPath.row]
+        let article = jsonDataArray[indexPath.row]
         
         cell.backgroundColor = .systemGreen
         cell.textLabel?.text = article.title
@@ -79,13 +79,11 @@ class NewsPageViewController: UITableViewController, SegementSlideContentScrollV
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let article = jsonDataArray[indexPath.row]
-        UserDefaults.standard.set(article.url, forKey: "url")
-        
         //１：遷移先の設定
         let nextPageController: WebViewController = WebViewController()
-        //２：トランジションの指定
+        //２：トランジションの指定,渡すURLを準備
         nextPageController.modalTransitionStyle = .coverVertical
+        nextPageController.urlString = jsonDataArray[indexPath.row].url
         //３：ナビゲーションコントローラーを生成
         let navigationController = UINavigationController(rootViewController: nextPageController)
         //４：次の画面へGO
