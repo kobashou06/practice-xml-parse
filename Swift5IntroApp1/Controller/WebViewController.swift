@@ -13,7 +13,7 @@ import WebKit
 class WebViewController: UIViewController,WKUIDelegate, WKNavigationDelegate {
     
     var webView = WKWebView()
-    var urlString:String = ""
+    var urlString: String = ""
     
     //Webサイト表示画面
     fileprivate func setupWebView() {
