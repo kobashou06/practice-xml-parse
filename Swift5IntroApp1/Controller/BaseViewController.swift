@@ -61,34 +61,27 @@ class BaseViewController: SegementSlideDefaultViewController {
     
     override func segementSlideContentViewController(at index: Int) -> SegementSlideContentScrollViewDelegate? {
 
-        let urlString:String
+        var urlModel:URLModel
 
         switch index {
 
         case 0:
-            urlString = "https://qiita.com/api/v2/items?query=\(words[0])"
-
+            urlModel = URLModel(word: self.words[0])
         case 1:
-            urlString = "https://qiita.com/api/v2/items?query=\(words[1])"
-
+            urlModel = URLModel(word: self.words[1])
         case 2:
-            urlString = "https://qiita.com/api/v2/items?query=\(words[2])"
-
+            urlModel = URLModel(word: self.words[2])
         case 3:
-            urlString = "https://qiita.com/api/v2/items?query=\(words[3])"
-
+            urlModel = URLModel(word: self.words[3])
         case 4:
-            urlString = "https://qiita.com/api/v2/items?query=\(words[4])"
-
+            urlModel = URLModel(word: self.words[4])
         case 5:
-            urlString = "https://qiita.com/api/v2/items?query=\(words[5])"
-
+            urlModel = URLModel(word: self.words[5])
         default:
-            urlString = "https://qiita.com/api/v2/items?query=\(words[0])"
-
+            urlModel = URLModel(word: self.words[0])
         }
 
-        return NewsPageViewController(urlString: urlString)
+        return NewsPageViewController(urlString: urlModel.url)
 
     }
 
