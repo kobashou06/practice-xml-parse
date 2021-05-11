@@ -6,6 +6,9 @@ import ImpressiveNotifications
 
 
 class BaseViewController: SegementSlideDefaultViewController {
+    
+    
+    let words = ["Swift","CocoaPods","Carthage","Xcode","SwiftUI","アーキテクチャ"]
 
     var urlModel = URLModel()
     
@@ -56,11 +59,11 @@ class BaseViewController: SegementSlideDefaultViewController {
     }
 
     override var titlesInSwitcher: [String] {
-        return urlModel.words
+        return words
     }
     
     override func segementSlideContentViewController(at index: Int) -> SegementSlideContentScrollViewDelegate? {
-        urlModel.setupURL(index: index)
+        urlModel.setupURL(word: words[index])
         return NewsPageViewController(urlString: urlModel.encodeUrlString)
     }
 

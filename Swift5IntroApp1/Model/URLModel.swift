@@ -10,13 +10,13 @@ import Foundation
 struct URLModel{
     
     var baseUrl = "https://qiita.com/api/v2/items?query="
-    let words = ["Swift","CocoaPods","Carthage","Xcode","SwiftUI","アーキテクチャ"]
     var searchUrl = ""
     var encodeUrlString = ""
     
-    mutating func setupURL(index: Int){
+    //BaseVCからキーワードを受け取り、URLを生成する
+    mutating func setupURL(word: String){
         
-        self.searchUrl = self.baseUrl + self.words[index]
+        self.searchUrl = self.baseUrl + word
         self.encodeUrlString = self.searchUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
     
     }

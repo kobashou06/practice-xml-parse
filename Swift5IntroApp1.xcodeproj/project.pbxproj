@@ -25,6 +25,7 @@
 		CEB074602629B84C000E9D0F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB0745F2629B84C000E9D0F /* BaseViewController.swift */; };
 		CEB074672629BB7C000E9D0F /* NewsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB074662629BB7C000E9D0F /* NewsPageViewController.swift */; };
 		CEB0746D2629D0D0000E9D0F /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB0746C2629D0D0000E9D0F /* WebViewController.swift */; };
+		CEC42F4D264A3563009FD7A5 /* URLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC42F4C264A3563009FD7A5 /* URLModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		CEB0745F2629B84C000E9D0F /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		CEB074662629BB7C000E9D0F /* NewsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPageViewController.swift; sourceTree = "<group>"; };
 		CEB0746C2629D0D0000E9D0F /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		CEC42F4C264A3563009FD7A5 /* URLModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLModel.swift; path = Swift5IntroApp1/Model/URLModel.swift; sourceTree = SOURCE_ROOT; };
 		DB2CACB753C081A9A16EEBD8 /* Pods-Swift5IntroApp1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swift5IntroApp1.release.xcconfig"; path = "Target Support Files/Pods-Swift5IntroApp1/Pods-Swift5IntroApp1.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				CE58CE0F2632C8BD00968EAD /* JSONModel.swift */,
+				CEC42F4C264A3563009FD7A5 /* URLModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				CE47D0FB26294C48009F0B82 /* IntroViewController.swift in Sources */,
 				CE3C1B4526296BEF0040C259 /* LoginMovieViewController.swift in Sources */,
 				CE58CE102632C8BD00968EAD /* JSONModel.swift in Sources */,
+				CEC42F4D264A3563009FD7A5 /* URLModel.swift in Sources */,
 				CE0C11B1262421D700D24B86 /* AppDelegate.swift in Sources */,
 				CEB074672629BB7C000E9D0F /* NewsPageViewController.swift in Sources */,
 				CE0C11B3262421D700D24B86 /* SceneDelegate.swift in Sources */,
