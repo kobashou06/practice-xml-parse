@@ -5,7 +5,7 @@ import ImpressiveNotifications
 //ニュース記事一覧画面
 
 
-class BaseViewController: SegementSlideDefaultViewController {
+class HomeViewController: SegementSlideDefaultViewController {
     
     var titleInSwitcherModel = TitleInSwitcherModel()
 
