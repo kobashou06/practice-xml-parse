@@ -9,12 +9,16 @@ import Foundation
 
 struct URLModel{
     
-    var url = "https://qiita.com/api/v2/items?query="
-    let word: String!
+    var baseUrl = "https://qiita.com/api/v2/items?query="
+    let words = ["Swift","CocoaPods","Carthage","Xcode","SwiftUI","アーキテクチャ"]
+    var searchUrl = ""
+    var encodeUrlString = ""
     
-    init(word: String){
-        self.word = word
-        self.url = self.url + self.word
+    mutating func setupURL(index: Int){
+        
+        self.searchUrl = self.baseUrl + self.words[index]
+        self.encodeUrlString = self.searchUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+    
     }
     
 }
