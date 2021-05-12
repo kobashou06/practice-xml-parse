@@ -51,9 +51,8 @@ class WebViewController: UIViewController,WKUIDelegate, WKNavigationDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        //isNavigationBarHiddenを明示的にfalseにするため、as!を使用
-        let webViewNavigationController = presentingViewController as! UINavigationController
-        webViewNavigationController.isNavigationBarHidden = false
+        let webViewNavigationController = presentingViewController as? UINavigationController
+        webViewNavigationController?.isNavigationBarHidden = false
         
     }
     
