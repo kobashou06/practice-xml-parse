@@ -17,7 +17,8 @@ struct URLModel{
     mutating func setupURL(word: String){
         
         self.searchUrl = self.baseUrl + word
-        self.encodeUrlString = self.searchUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        //デフォルトのURLを与えることで、Forced unwrappingをしない
+        self.encodeUrlString = self.searchUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "https://qiita.com/api/v2/items"
     
     }
     

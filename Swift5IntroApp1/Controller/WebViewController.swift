@@ -35,7 +35,7 @@ class WebViewController: UIViewController,WKUIDelegate, WKNavigationDelegate {
         let sideMenuBarButtonItem: UIBarButtonItem =
             UIBarButtonItem(image:UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(close(_:)))
         //２：生成したボタンを、ナビゲーションバー左部分に配置
-        self.navigationItem.setLeftBarButtonItems([sideMenuBarButtonItem], animated: true)
+        navigationItem.setLeftBarButtonItems([sideMenuBarButtonItem], animated: true)
         
         view.addSubview(webView)
         
@@ -51,6 +51,7 @@ class WebViewController: UIViewController,WKUIDelegate, WKNavigationDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        //isNavigationBarHiddenを明示的にfalseにするため、as!を使用
         let webViewNavigationController = self.presentingViewController as! UINavigationController
         webViewNavigationController.isNavigationBarHidden = false
         
