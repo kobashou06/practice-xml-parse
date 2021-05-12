@@ -11,6 +11,5 @@ target 'Swift5IntroApp1' do
   pod 'SegementSlide'
   pod 'ImpressiveNotifications'
   pod 'SwiftyJSON'
-  pod 'Alamofire'
 
 end
