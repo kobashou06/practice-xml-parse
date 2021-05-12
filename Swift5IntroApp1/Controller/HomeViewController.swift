@@ -62,8 +62,15 @@ class HomeViewController: SegementSlideDefaultViewController {
     }
     
     override func segementSlideContentViewController(at index: Int) -> SegementSlideContentScrollViewDelegate? {
-        urlModel.setupURL(word: titleInSwitcherModel.words[index])
-        return NewsPageViewController(urlString: urlModel.encodeUrlString)
+        let homeVCword = titleInSwitcherModel.words[index]
+        
+        //homeVCUrlStringがnilの場合、defaultUrlを返す
+        guard let homeVCUrlString = urlModel.getURLString(word: homeVCword) else {
+            return NewsPageViewController(urlString: urlModel.defaultUrl)
+        }
+        
+        return NewsPageViewController(urlString: homeVCUrlString)
+        
     }
 
 }

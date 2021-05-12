@@ -16,7 +16,7 @@ class NewsPageViewController: UITableViewController, SegementSlideContentScrollV
     
     var jsonDataArray = [JSONModel]()
     
-    var urlString:String?
+    var urlString:String
     
     init(urlString: String){
         self.urlString = urlString
@@ -93,7 +93,7 @@ class NewsPageViewController: UITableViewController, SegementSlideContentScrollV
     
     func request() {
 
-        AF.request(urlString! as URLConvertible , method: .get,encoding: JSONEncoding.default).responseJSON{(response) in
+        AF.request(urlString as URLConvertible , method: .get,encoding: JSONEncoding.default).responseJSON{(response) in
             switch response.result{
             case .success:
                 do{

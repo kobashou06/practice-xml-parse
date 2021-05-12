@@ -27,7 +27,20 @@ class WebViewController: UIViewController,WKUIDelegate, WKNavigationDelegate {
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        guard let url = URL(string: urlString) else {
+            return
+        }
+        
+        let request = URLRequest(url: url)
+        
+        view.addSubview(webView)
+        
+        setupWebView()
+    
+        webView.load(request)
         
         edgesForExtendedLayout = []
         
@@ -36,15 +49,6 @@ class WebViewController: UIViewController,WKUIDelegate, WKNavigationDelegate {
             UIBarButtonItem(image:UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(close(_:)))
         //２：生成したボタンを、ナビゲーションバー左部分に配置
         navigationItem.setLeftBarButtonItems([sideMenuBarButtonItem], animated: true)
-        
-        view.addSubview(webView)
-        
-        setupWebView()
-        
-        let url = URL(string: urlString)
-        let request = URLRequest(url: url!)
-        
-        webView.load(request)
         
     }
     

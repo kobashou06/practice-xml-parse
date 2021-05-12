@@ -10,16 +10,24 @@ import Foundation
 struct URLModel{
     
     var baseUrl = "https://qiita.com/api/v2/items?query="
-    var searchUrl = ""
-    var encodeUrlString = ""
+    var defaultUrl = "https://qiita.com/api/v2/items"
+    var urlString: String?
+    var encodeUrlString: String?
     
-    //BaseVCからキーワードを受け取り、URLを生成する
-    mutating func setupURL(word: String){
+    //HomeVCからキーワードを受け取り、生成したURLを返す
+    mutating func getURLString(word: String?) -> String? {
         
-        self.searchUrl = self.baseUrl + word
-        //デフォルトのURLを与えることで、Forced unwrappingをしない
-        self.encodeUrlString = self.searchUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "https://qiita.com/api/v2/items"
-    
+        //wordの中身をチェックする
+        guard let receivedWord = word else {
+            return nil
+        }
+        //urlの原型を作る
+        self.urlString = self.baseUrl + receivedWord
+        //パーセントエンコーディングする
+        self.encodeUrlString = self.urlString?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        
+        return self.encodeUrlString
+        
     }
     
 }
