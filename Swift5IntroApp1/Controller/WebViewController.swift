@@ -10,10 +10,11 @@
 import UIKit
 import WebKit
 
-class WebViewController: UIViewController,WKUIDelegate, WKNavigationDelegate {
+class WebViewController: UIViewController {
     
     var webView = WKWebView()
-    var urlString: String = ""
+    var urlModel = URLModel()
+    var requestUrl: String = ""
     
     //Webサイト表示画面
     fileprivate func setupWebView() {
@@ -30,17 +31,12 @@ class WebViewController: UIViewController,WKUIDelegate, WKNavigationDelegate {
         
         super.viewDidLoad()
         
-        guard let url = URL(string: urlString) else {
-            return
-        }
-        
-        let request = URLRequest(url: url)
-        
         view.addSubview(webView)
         
         setupWebView()
-    
-        webView.load(request)
+        
+        //NewsPageVCから受け取ったURL文字列を引数に、URLModelからURLRequest型の値を受け取る
+        webView.load(urlModel.getRequestURL(urlString: self.requestUrl))
         
         edgesForExtendedLayout = []
         
@@ -54,9 +50,17 @@ class WebViewController: UIViewController,WKUIDelegate, WKNavigationDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        //このviewを表示するとき、NavigationBarは隠さない
         let webViewNavigationController = presentingViewController as? UINavigationController
         webViewNavigationController?.isNavigationBarHidden = false
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        //このviewを破棄するとき、NavigationBarを隠す
+        let webViewNavigationController = presentingViewController as? UINavigationController
+        webViewNavigationController?.isNavigationBarHidden = true
         
     }
     

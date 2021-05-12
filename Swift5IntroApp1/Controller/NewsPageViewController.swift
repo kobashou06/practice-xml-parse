@@ -83,7 +83,7 @@ class NewsPageViewController: UITableViewController, SegementSlideContentScrollV
         let nextPageController: WebViewController = WebViewController()
         //２：トランジションの指定,渡すURLを準備
         nextPageController.modalTransitionStyle = .coverVertical
-        nextPageController.urlString = jsonDataArray[indexPath.row].url
+        nextPageController.requestUrl = jsonDataArray[indexPath.row].url
         //３：ナビゲーションコントローラーを生成
         let navigationController = UINavigationController(rootViewController: nextPageController)
         //４：次の画面へGO

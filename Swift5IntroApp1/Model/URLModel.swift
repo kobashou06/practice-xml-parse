@@ -11,6 +11,7 @@ struct URLModel{
     
     var baseUrl = "https://qiita.com/api/v2/items?query="
     var defaultUrl = "https://qiita.com/api/v2/items"
+    var errorUrl = "https://qiita.com/404"
     var urlString: String?
     var encodeUrlString: String?
     
@@ -19,7 +20,8 @@ struct URLModel{
         
         //wordの中身をチェックする
         guard let receivedWord = word else {
-            return nil
+            //wordがnilの場合、デフォルトURLを返す
+            return defaultUrl
         }
         //urlの原型を作る
         self.urlString = self.baseUrl + receivedWord
@@ -27,6 +29,28 @@ struct URLModel{
         self.encodeUrlString = self.urlString?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         
         return self.encodeUrlString
+        
+    }
+    
+    func getRequestURL(urlString: String) -> URLRequest {
+        
+        let url: URL
+        
+        //受け取った文字列がURL形式出ない（nil）の時、ErrorページのURLを返す
+        if URL(string: urlString) == nil {
+            
+            //ここでの「！」はURLの返り値がnilでないことを示す
+            url = URL(string: errorUrl)!
+            
+        }else {
+            //ここでの「！」はURLの返り値がnilでないことを示す
+            url = URL(string: urlString)!
+
+        }
+        
+        let requestUrl = URLRequest(url: url)
+        
+        return requestUrl
         
     }
     
