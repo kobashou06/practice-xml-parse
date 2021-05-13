@@ -7,9 +7,9 @@ import ImpressiveNotifications
 
 class HomeViewController: SegementSlideDefaultViewController {
     
-    var titleInSwitcherModel = TitleInSwitcherModel()
+    private var titleInSwitcherModel = TitleInSwitcherModel()
 
-    var urlModel = URLModel()
+    private var urlModel = URLModel()
     
     override func viewDidLoad() {
 

@@ -14,9 +14,9 @@ import SwiftyJSON
 
 class NewsPageViewController: UITableViewController, SegementSlideContentScrollViewDelegate {
     
-    var jsonDataArray = [JSONModel]()
+    private var jsonDataArray = [JSONModel]()
     
-    var urlString: String
+    private var urlString: String
     
     init(urlString: String){
         self.urlString = urlString
@@ -91,7 +91,7 @@ class NewsPageViewController: UITableViewController, SegementSlideContentScrollV
 
     }
     
-    func request() {
+    private func request() {
 
         AF.request(urlString as URLConvertible , method: .get,encoding: JSONEncoding.default).responseJSON{(response) in
             switch response.result{

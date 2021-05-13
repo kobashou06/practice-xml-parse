@@ -13,12 +13,12 @@ import ImpressiveNotifications
 
 class WebViewController: UIViewController {
     
-    var webView = WKWebView()
-    var urlModel = URLModel()
+    private var webView = WKWebView()
+    private var urlModel = URLModel()
     var urlString: String = ""
     
     //Webサイト表示画面
-    fileprivate func setupWebView() {
+    private func setupWebView() {
         
         webView.translatesAutoresizingMaskIntoConstraints = false
         webView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -86,7 +86,7 @@ class WebViewController: UIViewController {
     }
     
     //ナビゲーションバーボタンが押された時に実行される
-    @objc func close(_ sender: UIBarButtonItem){
+    @objc private func close(_ sender: UIBarButtonItem){
         //現在の画面を破棄する
         dismiss(animated: true, completion: nil)
     }
