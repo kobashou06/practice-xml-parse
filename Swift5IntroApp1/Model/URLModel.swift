@@ -37,20 +37,17 @@ struct URLModel{
         let url: URL
         
         //受け取った文字列がURL形式出ない（nil）の時、ErrorページのURLを返す
-        if URL(string: urlString) == nil {
+        if let url = URL(string: urlString) {
             
-            //ここでの「！」はURLの返り値がnilでないことを示す
-            url = URL(string: errorUrl)!
-            
-        }else {
-            //ここでの「！」はURLの返り値がnilでないことを示す
-            url = URL(string: urlString)!
+            //urlStringが正しいURL形式の時の処理
+            return URLRequest(url: url)
 
         }
         
-        let requestUrl = URLRequest(url: url)
+        //ここでの「！」はURLの返り値がnilでないことを示す
+        url = URL(string: errorUrl)!
         
-        return requestUrl
+        return URLRequest(url: url)
         
     }
     
