@@ -7,8 +7,9 @@
 
 import Foundation
 
-struct URLModel{
+struct URLModel {
     
+    //jsonParse
     let baseUrl = "https://qiita.com/api/v2/items?query="
     let defaultUrl = "https://qiita.com/api/v2/items"
     let errorUrl = "https://qiita.com/404"
@@ -17,20 +18,40 @@ struct URLModel{
     var encodeUrlString: String?
     var requestUrl: URLRequest?
     
+    //xmlParse
+    let forXMLParseUrlArray = [ "https://news.yahoo.co.jp/rss/topics/top-picks.xml",
+                                "https://news.yahoo.co.jp/rss/media/abema/all.xml",
+                                "https://news.yahoo.co.jp/rss/media/ycreatp/all.xml",
+                                "https://news.yahoo.co.jp/rss/topics/it.xml",
+                                "https://news.yahoo.co.jp/rss/media/bfj/all.xml",
+                                "https://news.yahoo.co.jp/rss/media/cnn/all.xml"]
+    
     //HomeVCからキーワードを受け取り、生成したURLを返す
-    mutating func getURLString(word: String?) -> String? {
+    mutating func getURLString(index: Int, jsonParseFlg: Bool) -> String? {
         
-        //wordの中身をチェックする
-        guard let receivedWord = word else {
-            //wordがnilの場合、デフォルトURLを返す
-            return defaultUrl
+        if jsonParseFlg == true {
+            
+            var titleModel = TitleInSwitcherModel()
+            let words = titleModel.getTitle(jsonParseFlg: jsonParseFlg)
+            let word:String? = words[index]
+            
+            //wordの中身をチェックする
+            guard let receivedWord = word else {
+                //wordがnilの場合、デフォルトURLを返す
+                return defaultUrl
+            }
+            //urlの原型を作る
+            self.urlString = self.baseUrl + receivedWord
+            //パーセントエンコーディングする
+            self.encodeUrlString = self.urlString?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            
+            return self.encodeUrlString
+            
+        }else{
+            //XMLパースの場合、配列の要素を返すだけ
+            return forXMLParseUrlArray[index]
+            
         }
-        //urlの原型を作る
-        self.urlString = self.baseUrl + receivedWord
-        //パーセントエンコーディングする
-        self.encodeUrlString = self.urlString?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        
-        return self.encodeUrlString
         
     }
     

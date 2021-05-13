@@ -7,6 +7,10 @@ import ImpressiveNotifications
 
 class HomeViewController: SegementSlideDefaultViewController {
     
+    var uiSwitch = UISwitch()
+    
+    private var jsonParseFlg: Bool = true
+    
     private var titleInSwitcherModel = TitleInSwitcherModel()
 
     private var urlModel = URLModel()
@@ -14,6 +18,15 @@ class HomeViewController: SegementSlideDefaultViewController {
     override func viewDidLoad() {
 
         super.viewDidLoad()
+        
+        view.addSubview(uiSwitch)
+        
+        uiSwitch.translatesAutoresizingMaskIntoConstraints = false
+        uiSwitch.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
+        uiSwitch.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2).isActive = true
+        uiSwitch.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1).isActive = true
+        view.bringSubviewToFront(uiSwitch)
+        uiSwitch.addTarget(self, action: #selector(jsonParseFlgSwitch(sender:)), for: UIControl.Event.valueChanged)
 
         reloadData()
 
@@ -27,6 +40,12 @@ class HomeViewController: SegementSlideDefaultViewController {
                                                                      completionHandler: {print("Login was successful")})
         )
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        reloadData()
+        defaultSelectedIndex = 0
     }
 
     
@@ -58,19 +77,33 @@ class HomeViewController: SegementSlideDefaultViewController {
     }
 
     override var titlesInSwitcher: [String] {
-        return titleInSwitcherModel.words
+        return titleInSwitcherModel.getTitle(jsonParseFlg: jsonParseFlg)
     }
     
     override func segementSlideContentViewController(at index: Int) -> SegementSlideContentScrollViewDelegate? {
-        let homeVCword = titleInSwitcherModel.words[index]
-        
-        //homeVCUrlStringがnilの場合、defaultUrlを返す
-        guard let homeVCUrlString = urlModel.getURLString(word: homeVCword) else {
-            return NewsPageViewController(urlString: urlModel.defaultUrl)
+ 
+        //nilの場合、defaultUrlを返す
+        guard let homeVCUrlString = urlModel.getURLString(index: index, jsonParseFlg: jsonParseFlg) else {
+            
+            return NewsPageViewController(urlString: urlModel.defaultUrl, jsonParseFlg: jsonParseFlg)
+            
         }
         
-        return NewsPageViewController(urlString: homeVCUrlString)
+        return NewsPageViewController(urlString: homeVCUrlString, jsonParseFlg: jsonParseFlg)
         
+    }
+    
+    @objc public func jsonParseFlgSwitch(sender: UISwitch) {
+        
+        if sender.isOn {
+            self.jsonParseFlg = true
+        }else{
+            self.jsonParseFlg = false
+        }
+        
+        reloadData()
+        defaultSelectedIndex = 0
+    
     }
 
 }

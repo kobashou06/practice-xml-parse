@@ -12,15 +12,24 @@ import SegementSlide
 import Alamofire
 import SwiftyJSON
 
-class NewsPageViewController: UITableViewController, SegementSlideContentScrollViewDelegate {
+class NewsPageViewController: UITableViewController {
     
-    private var jsonDataArray = [JSONModel]()
-    
+    //共通で使用
+    private var articleArray = [ArticleModel]()
+    private var urlModel = URLModel()
     private var urlString: String
+    private var jsonParseFlg: Bool
     
-    init(urlString: String){
+    //XML解析で使用
+    private var parser = XMLParser()
+    private var currentElementName: String!
+    
+    init(urlString: String, jsonParseFlg: Bool) {
+        
         self.urlString = urlString
+        self.jsonParseFlg = jsonParseFlg
         super.init(nibName: nil, bundle: nil)
+        
     }
     
     required init?(coder: NSCoder) {
@@ -30,15 +39,31 @@ class NewsPageViewController: UITableViewController, SegementSlideContentScrollV
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        request()
+        
+        if jsonParseFlg == true {
+            
+            request()
+            
+        }else{
+            
+            xmlParse()
+            
+        }
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         self.navigationController?.isNavigationBarHidden = true
-        request()
+        
     }
+    
+    
+    
+}
 
+extension NewsPageViewController: SegementSlideContentScrollViewDelegate {
+    
     @objc var scrollView: UIScrollView{
         return tableView
     }
@@ -51,7 +76,7 @@ class NewsPageViewController: UITableViewController, SegementSlideContentScrollV
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return jsonDataArray.count
+        return self.articleArray.count
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -62,9 +87,18 @@ class NewsPageViewController: UITableViewController, SegementSlideContentScrollV
         
         let cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
         
-        let article = jsonDataArray[indexPath.row]
+        let article = self.articleArray[indexPath.row]
         
-        cell.backgroundColor = .systemGreen
+        if jsonParseFlg == true {
+            
+            cell.backgroundColor = .systemGreen
+            
+        }else{
+            
+            cell.backgroundColor = .systemRed
+            
+        }
+        
         cell.textLabel?.text = article.title
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 15.0)
         cell.textLabel?.textColor = .black
@@ -83,7 +117,12 @@ class NewsPageViewController: UITableViewController, SegementSlideContentScrollV
         let nextPageController: WebViewController = WebViewController()
         //２：トランジションの指定,渡すURLを準備
         nextPageController.modalTransitionStyle = .coverVertical
-        nextPageController.urlString = jsonDataArray[indexPath.row].url
+        
+        guard let url = self.articleArray[indexPath.row].url else {
+            return
+        }
+        
+        nextPageController.urlString = url
         //３：ナビゲーションコントローラーを生成
         let navigationController = UINavigationController(rootViewController: nextPageController)
         //４：次の画面へGO
@@ -91,6 +130,13 @@ class NewsPageViewController: UITableViewController, SegementSlideContentScrollV
 
     }
     
+    
+    
+}
+
+extension NewsPageViewController {
+    
+    //JSONパース
     private func request() {
 
         AF.request(urlString as URLConvertible , method: .get,encoding: JSONEncoding.default).responseJSON{(response) in
@@ -109,8 +155,10 @@ class NewsPageViewController: UITableViewController, SegementSlideContentScrollV
                         
                         if json[i]["title"] != "" && json[i]["url"] != "" {
                             
-                            let item = JSONModel(title: json[i]["title"].string, url: json[i]["url"].string)
-                            self.jsonDataArray.append(item)
+                            let item = ArticleModel()
+                            item.title = json[i]["title"].string
+                            item.url = json[i]["url"].string
+                            self.articleArray.append(item)
                            
                         }else{
                             print("何かしらが空です")
@@ -130,6 +178,77 @@ class NewsPageViewController: UITableViewController, SegementSlideContentScrollV
             self.tableView.reloadData()
             
         }
+        
+    }
+    
+}
+
+extension NewsPageViewController: XMLParserDelegate {
+    
+    func xmlParse() {
+        
+        guard let url = URL(string: urlString) else {
+            return
+        }
+        
+        guard let parser =  XMLParser(contentsOf: url) else {
+            return
+        }
+        
+        parser.delegate = self
+        parser.parse()
+        
+    }
+    
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
+        
+        currentElementName = nil
+        
+        if elementName == "item" {
+            
+            self.articleArray.append(ArticleModel())
+            
+        }else{
+            
+            currentElementName = elementName
+            
+        }
+        
+    }
+    
+    func parser(_ parser: XMLParser, foundCharacters string: String) {
+        
+        if self.articleArray.count > 0 {
+            
+            let lastItem = self.articleArray[self.articleArray.count - 1]
+            print(lastItem)
+            
+            switch self.currentElementName {
+            
+            case "title":
+                lastItem.title = string
+                
+            case "link":
+                lastItem.url = string
+                
+            default:
+                break
+                
+            }
+            
+        }
+        
+    }
+    
+    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+        
+        self.currentElementName = nil
+        
+    }
+    
+    func parserDidEndDocument(_ parser: XMLParser) {
+        
+        self.tableView.reloadData()
         
     }
     
