@@ -5,9 +5,11 @@ import ImpressiveNotifications
 //ニュース記事一覧画面
 
 
-class BaseViewController: SegementSlideDefaultViewController {
+class HomeViewController: SegementSlideDefaultViewController {
+    
+    private var titleInSwitcherModel = TitleInSwitcherModel()
 
-    let words = ["Swift","CocoaPods","Carthage","Xcode","SwiftUI","アーキテクチャ"]
+    private var urlModel = URLModel()
     
     override func viewDidLoad() {
 
@@ -56,40 +58,19 @@ class BaseViewController: SegementSlideDefaultViewController {
     }
 
     override var titlesInSwitcher: [String] {
-        return words
+        return titleInSwitcherModel.words
     }
     
     override func segementSlideContentViewController(at index: Int) -> SegementSlideContentScrollViewDelegate? {
-
-        let urlString:String
-
-        switch index {
-
-        case 0:
-            urlString = "https://qiita.com/api/v2/items?query=\(words[0])"
-
-        case 1:
-            urlString = "https://qiita.com/api/v2/items?query=\(words[1])"
-
-        case 2:
-            urlString = "https://qiita.com/api/v2/items?query=\(words[2])"
-
-        case 3:
-            urlString = "https://qiita.com/api/v2/items?query=\(words[3])"
-
-        case 4:
-            urlString = "https://qiita.com/api/v2/items?query=\(words[4])"
-
-        case 5:
-            urlString = "https://qiita.com/api/v2/items?query=\(words[5])"
-
-        default:
-            urlString = "https://qiita.com/api/v2/items?query=\(words[0])"
-
+        let homeVCword = titleInSwitcherModel.words[index]
+        
+        //homeVCUrlStringがnilの場合、defaultUrlを返す
+        guard let homeVCUrlString = urlModel.getURLString(word: homeVCword) else {
+            return NewsPageViewController(urlString: urlModel.defaultUrl)
         }
-
-        return NewsPageViewController(urlString: urlString)
-
+        
+        return NewsPageViewController(urlString: homeVCUrlString)
+        
     }
 
 }

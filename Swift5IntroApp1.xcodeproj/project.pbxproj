@@ -22,11 +22,15 @@
 		CE47D0F726294BC5009F0B82 /* 3.json in Resources */ = {isa = PBXBuildFile; fileRef = CE47D0F226294BC5009F0B82 /* 3.json */; };
 		CE47D0FB26294C48009F0B82 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE47D0FA26294C48009F0B82 /* IntroViewController.swift */; };
 		CE58CE102632C8BD00968EAD /* JSONModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE58CE0F2632C8BD00968EAD /* JSONModel.swift */; };
+
 		CE923EDE264B635C0091E714 /* Alamofire.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CE47FCD9263BDEB100DDC1A6 /* Alamofire.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CE923EE0264B636C0091E714 /* Alamofire.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE47FCD9263BDEB100DDC1A6 /* Alamofire.xcframework */; };
-		CEB074602629B84C000E9D0F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB0745F2629B84C000E9D0F /* BaseViewController.swift */; };
+		CEB074602629B84C000E9D0F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB0745F2629B84C000E9D0F /* HomeViewController.swift */; };
+
 		CEB074672629BB7C000E9D0F /* NewsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB074662629BB7C000E9D0F /* NewsPageViewController.swift */; };
 		CEB0746D2629D0D0000E9D0F /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB0746C2629D0D0000E9D0F /* WebViewController.swift */; };
+		CEC42F4D264A3563009FD7A5 /* URLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC42F4C264A3563009FD7A5 /* URLModel.swift */; };
+		CEECE8DF264A583D003A8343 /* TitleInSwitcherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEECE8DE264A583D003A8343 /* TitleInSwitcherModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -63,9 +67,11 @@
 		CE47D0FA26294C48009F0B82 /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		CE47FCD9263BDEB100DDC1A6 /* Alamofire.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Alamofire.xcframework; path = Carthage/Build/Alamofire.xcframework; sourceTree = "<group>"; };
 		CE58CE0F2632C8BD00968EAD /* JSONModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONModel.swift; sourceTree = "<group>"; };
-		CEB0745F2629B84C000E9D0F /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		CEB0745F2629B84C000E9D0F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CEB074662629BB7C000E9D0F /* NewsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPageViewController.swift; sourceTree = "<group>"; };
 		CEB0746C2629D0D0000E9D0F /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		CEC42F4C264A3563009FD7A5 /* URLModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLModel.swift; path = Swift5IntroApp1/Model/URLModel.swift; sourceTree = SOURCE_ROOT; };
+		CEECE8DE264A583D003A8343 /* TitleInSwitcherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleInSwitcherModel.swift; sourceTree = "<group>"; };
 		DB2CACB753C081A9A16EEBD8 /* Pods-Swift5IntroApp1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swift5IntroApp1.release.xcconfig"; path = "Target Support Files/Pods-Swift5IntroApp1/Pods-Swift5IntroApp1.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -139,6 +145,8 @@
 			isa = PBXGroup;
 			children = (
 				CE58CE0F2632C8BD00968EAD /* JSONModel.swift */,
+				CEC42F4C264A3563009FD7A5 /* URLModel.swift */,
+				CEECE8DE264A583D003A8343 /* TitleInSwitcherModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -160,7 +168,7 @@
 				CE0C11B2262421D700D24B86 /* SceneDelegate.swift */,
 				CE47D0FA26294C48009F0B82 /* IntroViewController.swift */,
 				CE3C1B4426296BEF0040C259 /* LoginMovieViewController.swift */,
-				CEB0745F2629B84C000E9D0F /* BaseViewController.swift */,
+				CEB0745F2629B84C000E9D0F /* HomeViewController.swift */,
 				CEB074662629BB7C000E9D0F /* NewsPageViewController.swift */,
 				CEB0746C2629D0D0000E9D0F /* WebViewController.swift */,
 			);
@@ -288,10 +296,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEB074602629B84C000E9D0F /* BaseViewController.swift in Sources */,
+				CEECE8DF264A583D003A8343 /* TitleInSwitcherModel.swift in Sources */,
+				CEB074602629B84C000E9D0F /* HomeViewController.swift in Sources */,
 				CE47D0FB26294C48009F0B82 /* IntroViewController.swift in Sources */,
 				CE3C1B4526296BEF0040C259 /* LoginMovieViewController.swift in Sources */,
 				CE58CE102632C8BD00968EAD /* JSONModel.swift in Sources */,
+				CEC42F4D264A3563009FD7A5 /* URLModel.swift in Sources */,
 				CE0C11B1262421D700D24B86 /* AppDelegate.swift in Sources */,
 				CEB074672629BB7C000E9D0F /* NewsPageViewController.swift in Sources */,
 				CE0C11B3262421D700D24B86 /* SceneDelegate.swift in Sources */,

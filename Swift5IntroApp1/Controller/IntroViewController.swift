@@ -12,15 +12,15 @@ import Lottie
 
 class IntroViewController: UIViewController, UIScrollViewDelegate {
     
-    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet private weak var scrollView: UIScrollView!
     
-    @IBOutlet weak var skipButton: UIButton!
+    @IBOutlet private weak var skipButton: UIButton!
     
     //アニメーションさせるJsonの配列
-    var onboardArray = ["1","2","3","4","5"]
+    private var onboardArray = ["1","2","3","4","5"]
     
     //アニメーションの下に表示される文字列の配列
-    var onboardStringArray = ["aaaa","iiii","uuuu","eeee","oooo"]
+    private var onboardStringArray = ["aaaa","iiii","uuuu","eeee","oooo"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,14 +92,14 @@ class IntroViewController: UIViewController, UIScrollViewDelegate {
         
     }
     
-    func removeAllSubViews(parentView:UIView){
+    private func removeAllSubViews(parentView: UIView){
         let subviews = parentView.subviews
         for subview in subviews {
             subview.removeFromSuperview()
         }
     }
     
-    func setUpScroll(){
+    private func setUpScroll(){
         
         scrollView.delegate = self
         
@@ -113,7 +113,7 @@ class IntroViewController: UIViewController, UIScrollViewDelegate {
         for i in 0...4{
             
             let onboardLabel = UILabel(frame: CGRect(x: CGFloat(i) * view.bounds.size.width,
-                                                     y:view.bounds.size.height / 3,
+                                                     y: view.bounds.size.height / 3,
                                                      width: scrollView.bounds.size.width,
                                                      height: scrollView.bounds.size.height))
             
@@ -141,7 +141,7 @@ class IntroViewController: UIViewController, UIScrollViewDelegate {
         
     }
     
-    fileprivate func animationLottie() {
+    private func animationLottie() {
         //Lottieを使ってアニメーションさせる
         for i in 0...4{
             

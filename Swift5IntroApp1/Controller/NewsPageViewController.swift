@@ -14,9 +14,9 @@ import SwiftyJSON
 
 class NewsPageViewController: UITableViewController, SegementSlideContentScrollViewDelegate {
     
-    var jsonDataArray = [JSONModel]()
+    private var jsonDataArray = [JSONModel]()
     
-    var urlString:String?
+    private var urlString: String
     
     init(urlString: String){
         self.urlString = urlString
@@ -62,7 +62,7 @@ class NewsPageViewController: UITableViewController, SegementSlideContentScrollV
         
         let cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
         
-        let article = self.jsonDataArray[indexPath.row]
+        let article = jsonDataArray[indexPath.row]
         
         cell.backgroundColor = .systemGreen
         cell.textLabel?.text = article.title
@@ -78,24 +78,27 @@ class NewsPageViewController: UITableViewController, SegementSlideContentScrollV
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        let article = jsonDataArray[indexPath.row]
-        UserDefaults.standard.set(article.url, forKey: "url")
-        let webView = WebViewController()
-        webView.modalTransitionStyle = .crossDissolve
-        present(webView, animated: true, completion: nil)
-//        self.navigationController?.pushViewController(webView, animated: true)
+        
+        //１：遷移先の設定
+        let nextPageController: WebViewController = WebViewController()
+        //２：トランジションの指定,渡すURLを準備
+        nextPageController.modalTransitionStyle = .coverVertical
+        nextPageController.urlString = jsonDataArray[indexPath.row].url
+        //３：ナビゲーションコントローラーを生成
+        let navigationController = UINavigationController(rootViewController: nextPageController)
+        //４：次の画面へGO
+        present(navigationController, animated: true, completion: nil)
 
     }
     
-    func request() {
+    private func request() {
 
-        AF.request(urlString! as URLConvertible , method: .get,encoding: JSONEncoding.default).responseJSON{(response) in
+        AF.request(urlString as URLConvertible , method: .get,encoding: JSONEncoding.default).responseJSON{(response) in
             switch response.result{
             case .success:
                 do{
                     
-                    let json:JSON = try JSON(data: response.data!)
+                    let json: JSON = try JSON(data: response.data!)
                     var totalHitCount = json.count
                     
                     if totalHitCount > 50{
@@ -120,7 +123,7 @@ class NewsPageViewController: UITableViewController, SegementSlideContentScrollV
                 
                 break
                 
-            case .failure:break
+            case .failure: break
                 
             }
             

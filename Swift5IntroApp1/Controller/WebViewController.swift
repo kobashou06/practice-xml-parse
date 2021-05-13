@@ -9,16 +9,16 @@
 
 import UIKit
 import WebKit
+import ImpressiveNotifications
 
-class WebViewController: UIViewController,WKUIDelegate {
+class WebViewController: UIViewController {
     
-    var webView = WKWebView()
-    var backButton = UIButton()
-
+    private var webView = WKWebView()
+    private var urlModel = URLModel()
+    var urlString: String = ""
+    
     //Webサイト表示画面
-    fileprivate func setupWebView() {
-
-        view.addSubview(webView)
+    private func setupWebView() {
         
         webView.translatesAutoresizingMaskIntoConstraints = false
         webView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -28,57 +28,68 @@ class WebViewController: UIViewController,WKUIDelegate {
         
     }
     
-    //記事リストへ戻るボタン
-    fileprivate func setupBackButton() {
-        
-        backButton.setTitle("Back", for: .normal)
-        // ボタンのフォントサイズ
-        backButton.titleLabel?.font =  UIFont.systemFont(ofSize: 36)
-        backButton.setTitleColor(UIColor.systemGreen, for: .normal)
-        backButton.layer.cornerRadius = 10
-        
-        backButton.titleLabel?.adjustsFontSizeToFitWidth = true
-        
-        // 背景色
-        backButton.backgroundColor = UIColor.init(red:0.9, green: 0.9, blue: 0.9, alpha: 1)
-        
-        // タップされたときのaction
-        backButton.addTarget(self,
-                             action: #selector(self.buttonTapped(_:)),
-                             for: .touchUpInside)
-        
-        webView.addSubview(backButton)
-        
-        backButton.translatesAutoresizingMaskIntoConstraints = false
-        backButton.topAnchor.constraint(equalTo: webView.topAnchor).isActive = true
-        backButton.leadingAnchor.constraint(equalTo: webView.leadingAnchor,constant: 10).isActive = true
-        backButton.widthAnchor.constraint(equalTo: webView.widthAnchor,multiplier: 0.3).isActive = true
-        backButton.heightAnchor.constraint(equalTo: webView.heightAnchor,multiplier: 0.1).isActive = true
-        
-        
-    }
-    
-    //実際に前の画面へ戻る処理
-    @objc func buttonTapped(_ sender : UIButton) {
-            dismiss(animated: true, completion: nil)
-    }
-    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
-        setupWebView()
-        setupBackButton()
+        edgesForExtendedLayout = []
         
-        let urlString = UserDefaults.standard.object(forKey: "url")
-        let url = URL(string: urlString as! String)
-        let request = URLRequest(url: url!)
-        webView.load(request)
+        //１：サイドメニューバーボタンを生成
+        let sideMenuBarButtonItem: UIBarButtonItem =
+            UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(close(_:)))
+        //２：生成したボタンを、ナビゲーションバー左部分に配置
+        navigationItem.setLeftBarButtonItems([sideMenuBarButtonItem], animated: true)
+        
+        view.addSubview(webView)
+        
+        setupWebView()
+        
+        //NewsPageVCから受け取ったURL文字列を引数に、URLModelからURLRequest型の値を受け取る
+        urlModel.setRequestURL(urlString: self.urlString)
+        
+        //webView.loadのときアンラップが必要なので
+        guard let url = urlModel.requestUrl else {
+            
+            if let homeurl = URL(string: urlModel.homeUrl) {
+                webView.load(URLRequest(url: homeurl) )
+            }
+            
+            //ImpressiveNotificationsを使って、通知（URLの不正を伝える）
+            INNotifications.show(type: .danger,data: INNotificationData(title: "URL Not Found",
+                                                                         description: "自動的にHomeへ遷移しました",
+                                                                         image: nil,
+                                                                         delay: 5.0,
+                                                                         completionHandler: {print("URL Error")}))
+            
+            return
+        }
+        
+        webView.load(url)
+        
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = false
+        //このviewを表示するとき、NavigationBarは隠さない
+        let webViewNavigationController = presentingViewController as? UINavigationController
+        webViewNavigationController?.isNavigationBarHidden = false
+        
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        //このviewを破棄するとき、NavigationBarを隠す
+        let webViewNavigationController = presentingViewController as? UINavigationController
+        webViewNavigationController?.isNavigationBarHidden = true
+        
+    }
+    
+    //ナビゲーションバーボタンが押された時に実行される
+    @objc private func close(_ sender: UIBarButtonItem){
+        //現在の画面を破棄する
+        dismiss(animated: true, completion: nil)
+    }
+    
 
 }

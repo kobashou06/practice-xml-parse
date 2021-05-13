@@ -12,10 +12,10 @@ import AVFoundation
 
 class LoginMovieViewController: UIViewController {
     
-    @IBOutlet weak var blurView: UIVisualEffectView!
+    @IBOutlet private weak var blurView: UIVisualEffectView!
     
-    var player = AVPlayer()
-    var playerLayer = AVPlayerLayer()
+    private var player = AVPlayer()
+    private var playerLayer = AVPlayerLayer()
     
     override func viewDidLoad() {
         
@@ -105,7 +105,7 @@ class LoginMovieViewController: UIViewController {
         
     }
     
-    @IBAction func login(_ sender: Any) {
+    @IBAction private func login(_ sender: Any) {
         
         self.player.pause()
         
