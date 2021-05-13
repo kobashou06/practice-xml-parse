@@ -16,7 +16,7 @@ class NewsPageViewController: UITableViewController, SegementSlideContentScrollV
     
     var jsonDataArray = [JSONModel]()
     
-    var urlString:String
+    var urlString: String
     
     init(urlString: String){
         self.urlString = urlString
