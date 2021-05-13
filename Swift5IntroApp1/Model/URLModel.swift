@@ -12,6 +12,7 @@ struct URLModel{
     var baseUrl = "https://qiita.com/api/v2/items?query="
     var defaultUrl = "https://qiita.com/api/v2/items"
     var errorUrl = "https://qiita.com/404"
+    var homeUrl = "https://qiita.com/"
     var urlString: String?
     var encodeUrlString: String?
     var requestUrl: URLRequest?

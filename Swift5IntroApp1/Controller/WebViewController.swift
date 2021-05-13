@@ -9,6 +9,7 @@
 
 import UIKit
 import WebKit
+import ImpressiveNotifications
 
 class WebViewController: UIViewController {
     
@@ -31,6 +32,14 @@ class WebViewController: UIViewController {
         
         super.viewDidLoad()
         
+        edgesForExtendedLayout = []
+        
+        //１：サイドメニューバーボタンを生成
+        let sideMenuBarButtonItem: UIBarButtonItem =
+            UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(close(_:)))
+        //２：生成したボタンを、ナビゲーションバー左部分に配置
+        navigationItem.setLeftBarButtonItems([sideMenuBarButtonItem], animated: true)
+        
         view.addSubview(webView)
         
         setupWebView()
@@ -40,18 +49,19 @@ class WebViewController: UIViewController {
         
         //webView.loadのときアンラップが必要なので
         guard let url = urlModel.requestUrl else {
+            
+            webView.load(URLRequest(url: URL(string: urlModel.homeUrl)!))
+            //ImpressiveNotificationsを使って、通知（URLの不正を伝える）
+            INNotifications.show(type: .danger,data: INNotificationData(title: "URL Not Found",
+                                                                         description: "自動的にHomeへ遷移しました",
+                                                                         image: nil,
+                                                                         delay: 5.0,
+                                                                         completionHandler: {print("URL Error")}))
             return
         }
         
         webView.load(url)
         
-        edgesForExtendedLayout = []
-        
-        //１：サイドメニューバーボタンを生成
-        let sideMenuBarButtonItem: UIBarButtonItem =
-            UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(close(_:)))
-        //２：生成したボタンを、ナビゲーションバー左部分に配置
-        navigationItem.setLeftBarButtonItems([sideMenuBarButtonItem], animated: true)
         
     }
     
