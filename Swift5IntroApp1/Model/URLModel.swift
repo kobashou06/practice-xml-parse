@@ -9,10 +9,10 @@ import Foundation
 
 struct URLModel{
     
-    var baseUrl = "https://qiita.com/api/v2/items?query="
-    var defaultUrl = "https://qiita.com/api/v2/items"
-    var errorUrl = "https://qiita.com/404"
-    var homeUrl = "https://qiita.com/"
+    let baseUrl = "https://qiita.com/api/v2/items?query="
+    let defaultUrl = "https://qiita.com/api/v2/items"
+    let errorUrl = "https://qiita.com/404"
+    let homeUrl = "https://qiita.com/"
     var urlString: String?
     var encodeUrlString: String?
     var requestUrl: URLRequest?
