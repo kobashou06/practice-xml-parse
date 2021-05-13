@@ -50,13 +50,17 @@ class WebViewController: UIViewController {
         //webView.loadのときアンラップが必要なので
         guard let url = urlModel.requestUrl else {
             
-            webView.load(URLRequest(url: URL(string: urlModel.homeUrl)!))
+            if let homeurl = URL(string: urlModel.homeUrl) {
+                webView.load(URLRequest(url: homeurl) )
+            }
+            
             //ImpressiveNotificationsを使って、通知（URLの不正を伝える）
             INNotifications.show(type: .danger,data: INNotificationData(title: "URL Not Found",
                                                                          description: "自動的にHomeへ遷移しました",
                                                                          image: nil,
                                                                          delay: 5.0,
                                                                          completionHandler: {print("URL Error")}))
+            
             return
         }
         
