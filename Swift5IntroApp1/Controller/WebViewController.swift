@@ -14,7 +14,7 @@ class WebViewController: UIViewController {
     
     var webView = WKWebView()
     var urlModel = URLModel()
-    var requestUrl: String = ""
+    var urlString: String = ""
     
     //Webサイト表示画面
     fileprivate func setupWebView() {
@@ -36,7 +36,14 @@ class WebViewController: UIViewController {
         setupWebView()
         
         //NewsPageVCから受け取ったURL文字列を引数に、URLModelからURLRequest型の値を受け取る
-        webView.load(urlModel.getRequestURL(urlString: self.requestUrl))
+        urlModel.setRequestURL(urlString: self.urlString)
+        
+        //webView.loadのときアンラップが必要なので
+        guard let url = urlModel.requestUrl else {
+            return
+        }
+        
+        webView.load(url)
         
         edgesForExtendedLayout = []
         

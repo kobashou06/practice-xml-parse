@@ -14,6 +14,7 @@ struct URLModel{
     var errorUrl = "https://qiita.com/404"
     var urlString: String?
     var encodeUrlString: String?
+    var requestUrl: URLRequest?
     
     //HomeVCからキーワードを受け取り、生成したURLを返す
     mutating func getURLString(word: String?) -> String? {
@@ -32,22 +33,24 @@ struct URLModel{
         
     }
     
-    func getRequestURL(urlString: String) -> URLRequest {
-        
-        let url: URL
+    mutating func setRequestURL(urlString: String) {
         
         //受け取った文字列がURL形式出ない（nil）の時、ErrorページのURLを返す
         if let url = URL(string: urlString) {
             
             //urlStringが正しいURL形式の時の処理
-            return URLRequest(url: url)
+            self.requestUrl = URLRequest(url: url)
 
+        }else{
+            
+            //errorUrlもアンラップ
+            guard let url = URL(string: errorUrl) else {
+                return
+            }
+            
+            self.requestUrl = URLRequest(url: url)
+            
         }
-        
-        //ここでの「！」はURLの返り値がnilでないことを示す
-        url = URL(string: errorUrl)!
-        
-        return URLRequest(url: url)
         
     }
     
