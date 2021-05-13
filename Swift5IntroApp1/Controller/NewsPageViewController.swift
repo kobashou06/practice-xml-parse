@@ -98,7 +98,7 @@ class NewsPageViewController: UITableViewController, SegementSlideContentScrollV
             case .success:
                 do{
                     
-                    let json:JSON = try JSON(data: response.data!)
+                    let json: JSON = try JSON(data: response.data!)
                     var totalHitCount = json.count
                     
                     if totalHitCount > 50{
@@ -123,7 +123,7 @@ class NewsPageViewController: UITableViewController, SegementSlideContentScrollV
                 
                 break
                 
-            case .failure:break
+            case .failure: break
                 
             }
             

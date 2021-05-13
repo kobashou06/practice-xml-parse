@@ -49,7 +49,7 @@ class WebViewController: UIViewController {
         
         //１：サイドメニューバーボタンを生成
         let sideMenuBarButtonItem: UIBarButtonItem =
-            UIBarButtonItem(image:UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(close(_:)))
+            UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(close(_:)))
         //２：生成したボタンを、ナビゲーションバー左部分に配置
         navigationItem.setLeftBarButtonItems([sideMenuBarButtonItem], animated: true)
         

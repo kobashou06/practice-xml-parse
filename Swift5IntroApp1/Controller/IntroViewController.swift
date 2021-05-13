@@ -92,7 +92,7 @@ class IntroViewController: UIViewController, UIScrollViewDelegate {
         
     }
     
-    func removeAllSubViews(parentView:UIView){
+    func removeAllSubViews(parentView: UIView){
         let subviews = parentView.subviews
         for subview in subviews {
             subview.removeFromSuperview()
@@ -113,7 +113,7 @@ class IntroViewController: UIViewController, UIScrollViewDelegate {
         for i in 0...4{
             
             let onboardLabel = UILabel(frame: CGRect(x: CGFloat(i) * view.bounds.size.width,
-                                                     y:view.bounds.size.height / 3,
+                                                     y: view.bounds.size.height / 3,
                                                      width: scrollView.bounds.size.width,
                                                      height: scrollView.bounds.size.height))
             
