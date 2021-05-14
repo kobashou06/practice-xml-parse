@@ -9,6 +9,9 @@
 
 import UIKit
 import SegementSlide
+import Alamofire
+import SwiftyJSON
+import ImpressiveNotifications
 
 class NewsPageViewController: UITableViewController {
     
@@ -55,6 +58,12 @@ class NewsPageViewController: UITableViewController {
         
     }
     
+    private func notificationError() {
+        INNotifications.show(type: .danger,
+                             data: INNotificationData(title: "記事の取得に失敗しました",
+                                                      image: nil,
+                                                      delay: 2.0))
+    }
     
     
 }

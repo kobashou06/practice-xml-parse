@@ -55,11 +55,11 @@ class WebViewController: UIViewController {
             }
             
             //ImpressiveNotificationsを使って、通知（URLの不正を伝える）
-            INNotifications.show(type: .danger, data: INNotificationData(title: "URL Not Found",
-                                                                         description: "自動的にHomeへ遷移しました",
-                                                                         image: nil,
-                                                                         delay: 5.0,
-                                                                         completionHandler: {print("URL Error")}))
+            INNotifications.show(type: .danger,
+                                 data: INNotificationData(title: "URL Not Found",
+                                                          description: "自動的にHomeへ遷移しました",
+                                                          image: nil,
+                                                          delay: 5.0))
             
             return
         }

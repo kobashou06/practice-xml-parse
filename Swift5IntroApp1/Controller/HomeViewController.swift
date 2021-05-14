@@ -29,12 +29,10 @@ class HomeViewController: SegementSlideDefaultViewController {
         defaultSelectedIndex = 0
         
         //ImpressiveNotificationsを使って、通知を出してみる（ログイン成功を伝える）
-        INNotifications.show(type: .success, data: INNotificationData(title: "Success",
-                                                                     description: "Login was successful!",
-                                                                     image: nil,
-                                                                     delay: 2.0,
-                                                                     completionHandler: {print("Login was successful")})
-        )
+        INNotifications.show(type: .success,
+                             data: INNotificationData(title: "Success",
+                                                      image: nil,
+                                                      delay: 2.0))
 
     }
     
