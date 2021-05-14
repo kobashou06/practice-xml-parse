@@ -56,7 +56,7 @@ class HomeViewController: SegementSlideDefaultViewController {
         
         //AutoLayoutの設定
         forChangeFlgSwitch.translatesAutoresizingMaskIntoConstraints = false
-        forChangeFlgSwitch.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
+        forChangeFlgSwitch.topAnchor.constraint(equalTo: view.topAnchor, constant: view.bounds.size.height / 6).isActive = true
         forChangeFlgSwitch.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2).isActive = true
         forChangeFlgSwitch.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1).isActive = true
     }
