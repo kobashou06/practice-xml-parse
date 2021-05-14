@@ -8,9 +8,9 @@ import ImpressiveNotifications
 class HomeViewController: SegementSlideDefaultViewController {
     
     //Change JSON Parse or XML Parse
-    var forChangeFlagSwitch = UISwitch()
+    private var forChangeFlagSwitch = UISwitch()
     
-    private var jsonParseFlag: Bool = true
+    private var jsonParseFlag = true
     
     private var titleInSwitcherModel = TitleInSwitcherModel()
 

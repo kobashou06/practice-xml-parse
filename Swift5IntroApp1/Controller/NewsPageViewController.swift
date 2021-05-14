@@ -19,7 +19,7 @@ class NewsPageViewController: UITableViewController {
     
     //XML解析で使用
     var parser = XMLParser()
-    var currentElementName: String = ""
+    var currentElementName = ""
     
     init(urlString: String, jsonParseFlag: Bool) {
         
@@ -125,6 +125,132 @@ extension NewsPageViewController: SegementSlideContentScrollViewDelegate {
         //４：次の画面へGO
         present(navigationController, animated: true, completion: nil)
 
+    }
+    
+}
+
+extension NewsPageViewController {
+    
+    //JSONパース
+    func request() {
+
+        AF.request(urlString as URLConvertible , method: .get,encoding: JSONEncoding.default).responseJSON{ response in
+            switch response.result{
+            case .success:
+                do {
+                    
+                    guard let data = response.data else {
+                        self.notificationError()
+                        return
+                    }
+                    
+                    let json: JSON = try JSON(data: data)
+                    var totalHitCount = json.count
+                    
+                    if totalHitCount > 50 {
+                        totalHitCount = 50
+                    }
+                    
+                    for i in 0...totalHitCount - 1 {
+                        
+                        if json[i]["title"] != "" && json[i]["url"] != "" {
+                            
+                            let item = ArticleModel()
+                            item.title = json[i]["title"].string
+                            item.url = json[i]["url"].string
+                            self.articleArray.append(item)
+                           
+                        }
+                    }
+                    
+                } catch {
+                    self.notificationError()
+                }
+                
+                break
+                
+            case .failure:
+                self.notificationError()
+                break
+                
+            }
+            
+            self.tableView.reloadData()
+            
+        }
+        
+    }
+    
+}
+
+extension NewsPageViewController: XMLParserDelegate {
+    
+    func xmlParse() {
+        
+        guard let url = URL(string: urlString) else {
+            notificationError()
+            return
+        }
+        
+        guard let parser =  XMLParser(contentsOf: url) else {
+            notificationError()
+            return
+        }
+        
+        parser.delegate = self
+        parser.parse()
+        
+    }
+    
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
+        
+        currentElementName = ""
+        
+        if elementName == "item" {
+            
+            articleArray.append(ArticleModel())
+            
+        } else {
+            
+            currentElementName = elementName
+            
+        }
+        
+    }
+    
+    func parser(_ parser: XMLParser, foundCharacters string: String) {
+        
+        if articleArray.count > 0 {
+            
+            let lastItem = articleArray[articleArray.count - 1]
+            
+            switch currentElementName {
+            
+            case "title":
+                lastItem.title = string
+                
+            case "link":
+                lastItem.url = string
+                
+            default:
+                break
+                
+            }
+            
+        }
+        
+    }
+    
+    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+        
+        currentElementName = ""
+        
+    }
+    
+    func parserDidEndDocument(_ parser: XMLParser) {
+        
+        tableView.reloadData()
+        
     }
     
 }
