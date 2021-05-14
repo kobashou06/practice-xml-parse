@@ -21,8 +21,12 @@ class NewsPageViewController: UITableViewController {
     private var jsonParseFlag: Bool
     
     //XML解析で使用
+    var xmlData = XMLData()
     var parser = XMLParser()
     var currentElementName = ""
+    
+    //JSON解析で使用
+    var jsonData = JSONData()
     
     init(urlString: String, jsonParseFlag: Bool) {
         
@@ -65,6 +69,14 @@ class NewsPageViewController: UITableViewController {
                                                       delay: 2.0))
     }
     
+    private func notificationFinish() {
+        INNotifications.show(type: .success,
+                             data: INNotificationData(title: "記事の読み込みが終了しました！",
+                                                      image: nil,
+                                                      delay: 2.0))
+        
+    }
+
     
 }
 
@@ -151,13 +163,10 @@ extension NewsPageViewController: SegementSlideContentScrollViewDelegate {
                     }
                     
                     let json: JSON = try JSON(data: data)
-                    var totalHitCount = json.count
                     
-                    if totalHitCount > 50 {
-                        totalHitCount = 50
-                    }
+                    let maxPerPage = self?.jsonData.jsonPerPageMax
                     
-                    for i in 0...totalHitCount - 1 {
+                    for i in 0...(maxPerPage ?? 20) - 1 {
                         
                         if json[i]["title"] != "" && json[i]["url"] != "" {
                             
@@ -168,6 +177,8 @@ extension NewsPageViewController: SegementSlideContentScrollViewDelegate {
                            
                         }
                     }
+                    
+                    self?.notificationFinish()
                     
                 } catch {
                     self?.notificationError()
