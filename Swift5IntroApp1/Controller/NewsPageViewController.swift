@@ -19,7 +19,7 @@ class NewsPageViewController: UITableViewController {
     
     //XML解析で使用
     var parser = XMLParser()
-    var currentElementName: String!
+    var currentElementName: String = ""
     
     init(urlString: String, jsonParseFlag: Bool) {
         

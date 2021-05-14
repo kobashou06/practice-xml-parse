@@ -26,7 +26,7 @@ extension NewsPageViewController: XMLParserDelegate {
     
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
         
-        currentElementName = nil
+        currentElementName = ""
         
         if elementName == "item" {
             
@@ -65,7 +65,7 @@ extension NewsPageViewController: XMLParserDelegate {
     
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         
-        currentElementName = nil
+        currentElementName = ""
         
     }
     
