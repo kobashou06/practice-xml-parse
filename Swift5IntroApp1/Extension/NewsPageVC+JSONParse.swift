@@ -17,12 +17,12 @@ extension NewsPageViewController {
         AF.request(urlString as URLConvertible , method: .get,encoding: JSONEncoding.default).responseJSON{(response) in
             switch response.result{
             case .success:
-                do{
+                do {
                     
                     let json: JSON = try JSON(data: response.data!)
                     var totalHitCount = json.count
                     
-                    if totalHitCount > 50{
+                    if totalHitCount > 50 {
                         totalHitCount = 50
                     }
                     
@@ -35,12 +35,12 @@ extension NewsPageViewController {
                             item.url = json[i]["url"].string
                             self.articleArray.append(item)
                            
-                        }else{
+                        } else {
                             print("何かしらが空です")
                         }
                     }
                     
-                }catch{
+                } catch {
                     print("error")
                 }
                 

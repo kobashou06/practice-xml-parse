@@ -32,7 +32,7 @@ extension NewsPageViewController: XMLParserDelegate {
             
             self.articleArray.append(ArticleModel())
             
-        }else{
+        } else {
             
             currentElementName = elementName
             

@@ -41,7 +41,7 @@ class NewsPageViewController: UITableViewController {
             
             request()
             
-        }else{
+        } else {
             
             xmlParse()
             
@@ -61,7 +61,7 @@ class NewsPageViewController: UITableViewController {
 
 extension NewsPageViewController: SegementSlideContentScrollViewDelegate {
     
-    @objc var scrollView: UIScrollView{
+    @objc var scrollView: UIScrollView {
         return tableView
     }
 
@@ -90,7 +90,7 @@ extension NewsPageViewController: SegementSlideContentScrollViewDelegate {
             
             cell.backgroundColor = .systemGreen
             
-        }else{
+        } else {
             
             cell.backgroundColor = .systemRed
             
@@ -112,7 +112,7 @@ extension NewsPageViewController: SegementSlideContentScrollViewDelegate {
         
         //１：遷移先の設定
         let nextPageController: WebViewController = WebViewController()
-        //２：トランジションの指定,渡すURLを準備
+        //２：トランジションの指定, 渡すURLを準備
         nextPageController.modalTransitionStyle = .coverVertical
         
         guard let url = self.articleArray[indexPath.row].url else {

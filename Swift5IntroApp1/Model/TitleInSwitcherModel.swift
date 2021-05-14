@@ -15,13 +15,13 @@ struct TitleInSwitcherModel {
         
         if jsonParseFlag == false {
             
-            words = ["TOP","Abema TIMES","Yahoo! JAPAN クリエイターズプログラム","IT","BuzzFeed Japan","CNN.co.jp"]
+            words = ["TOP", "Abema TIMES", "Yahoo! JAPAN クリエイターズプログラム", "IT", "BuzzFeed Japan", "CNN.co.jp"]
             
             return words
             
         }
         
-        words = ["Swift","CocoaPods","Carthage","Xcode","SwiftUI","アーキテクチャ"]
+        words = ["Swift", "CocoaPods", "Carthage", "Xcode", "SwiftUI", "アーキテクチャ"]
         
         return words
             

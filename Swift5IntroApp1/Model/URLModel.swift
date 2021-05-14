@@ -47,7 +47,7 @@ struct URLModel {
             
             return self.encodeUrlString
             
-        }else{
+        } else {
             //XMLパースの場合、配列の要素を返すだけ
             return forXMLParseUrlArray[index]
             
@@ -63,7 +63,7 @@ struct URLModel {
             //urlStringが正しいURL形式の時の処理
             self.requestUrl = URLRequest(url: url)
 
-        }else{
+        } else {
             
             //errorUrlもアンラップ
             guard let url = URL(string: errorUrl) else {

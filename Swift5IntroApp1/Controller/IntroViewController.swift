@@ -110,7 +110,7 @@ class IntroViewController: UIViewController, UIScrollViewDelegate {
                                             * CGFloat(onboardArray.count),
                                         height: view.bounds.size.height)
         
-        for i in 0...4{
+        for i in 0...4 {
             
             let onboardLabel = UILabel(frame: CGRect(x: CGFloat(i) * view.bounds.size.width,
                                                      y: view.bounds.size.height / 3,
@@ -143,7 +143,7 @@ class IntroViewController: UIViewController, UIScrollViewDelegate {
     
     private func animationLottie() {
         //Lottieを使ってアニメーションさせる
-        for i in 0...4{
+        for i in 0...4 {
             
             let animationView = AnimationView()
             let animation = Animation.named(onboardArray[i])
