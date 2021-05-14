@@ -16,7 +16,7 @@ import ImpressiveNotifications
 class NewsPageViewController: UITableViewController {
     
     //json, xml共通使用
-    var articleArray = [ArticleModel]()
+    private var articleArray = [ArticleModel]()
     var urlString: String
     private var jsonParseFlag: Bool
     
@@ -136,20 +136,17 @@ extension NewsPageViewController: SegementSlideContentScrollViewDelegate {
 
     }
     
-}
-
-extension NewsPageViewController {
-    
     //JSONパース
     func request() {
 
-        AF.request(urlString as URLConvertible , method: .get,encoding: JSONEncoding.default).responseJSON{ response in
-            switch response.result{
+        AF.request(urlString as URLConvertible , method: .get, encoding: JSONEncoding.default).responseJSON { [weak self]
+            response in
+            switch response.result {
             case .success:
                 do {
                     
                     guard let data = response.data else {
-                        self.notificationError()
+                        self?.notificationError()
                         return
                     }
                     
@@ -167,24 +164,24 @@ extension NewsPageViewController {
                             let item = ArticleModel()
                             item.title = json[i]["title"].string
                             item.url = json[i]["url"].string
-                            self.articleArray.append(item)
+                            self?.articleArray.append(item)
                            
                         }
                     }
                     
                 } catch {
-                    self.notificationError()
+                    self?.notificationError()
                 }
                 
                 break
                 
             case .failure:
-                self.notificationError()
+                self?.notificationError()
                 break
                 
             }
             
-            self.tableView.reloadData()
+            self?.tableView.reloadData()
             
         }
         

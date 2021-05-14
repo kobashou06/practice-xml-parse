@@ -104,13 +104,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		CE0B8B81264DF046003D920C /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extension;
-			sourceTree = "<group>";
-		};
 		CE0C11A4262421D700D24B86 = {
 			isa = PBXGroup;
 			children = (
@@ -135,7 +128,6 @@
 				CE47D0EB26294B17009F0B82 /* Model */,
 				CE47D0EC26294B21009F0B82 /* View */,
 				CE47D0ED26294B2A009F0B82 /* Controller */,
-				CE0B8B81264DF046003D920C /* Extension */,
 				CE0C11BE262421DB00D24B86 /* Info.plist */,
 				CE3C1B4A262970840040C259 /* start.mov */,
 				CE47D0F126294BC5009F0B82 /* 1.json */,
