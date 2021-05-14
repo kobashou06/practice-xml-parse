@@ -45,7 +45,7 @@ class WebViewController: UIViewController {
         setupWebView()
         
         //NewsPageVCから受け取ったURL文字列を引数に、URLModelからURLRequest型の値を受け取る
-        urlModel.setRequestURL(urlString: self.urlString)
+        urlModel.setRequestURL(urlString: urlString)
         
         //webView.loadのときアンラップが必要なので
         guard let url = urlModel.requestUrl else {

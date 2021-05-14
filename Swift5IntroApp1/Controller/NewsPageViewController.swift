@@ -73,7 +73,7 @@ extension NewsPageViewController: SegementSlideContentScrollViewDelegate {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.articleArray.count
+        return articleArray.count
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -84,7 +84,7 @@ extension NewsPageViewController: SegementSlideContentScrollViewDelegate {
         
         let cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
         
-        let article = self.articleArray[indexPath.row]
+        let article = articleArray[indexPath.row]
         
         if jsonParseFlag == true {
             
@@ -115,7 +115,7 @@ extension NewsPageViewController: SegementSlideContentScrollViewDelegate {
         //２：トランジションの指定, 渡すURLを準備
         nextPageController.modalTransitionStyle = .coverVertical
         
-        guard let url = self.articleArray[indexPath.row].url else {
+        guard let url = articleArray[indexPath.row].url else {
             return
         }
         

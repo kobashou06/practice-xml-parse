@@ -30,7 +30,7 @@ extension NewsPageViewController: XMLParserDelegate {
         
         if elementName == "item" {
             
-            self.articleArray.append(ArticleModel())
+            articleArray.append(ArticleModel())
             
         } else {
             
@@ -42,11 +42,11 @@ extension NewsPageViewController: XMLParserDelegate {
     
     func parser(_ parser: XMLParser, foundCharacters string: String) {
         
-        if self.articleArray.count > 0 {
+        if articleArray.count > 0 {
             
-            let lastItem = self.articleArray[self.articleArray.count - 1]
+            let lastItem = articleArray[articleArray.count - 1]
             
-            switch self.currentElementName {
+            switch currentElementName {
             
             case "title":
                 lastItem.title = string
@@ -65,13 +65,13 @@ extension NewsPageViewController: XMLParserDelegate {
     
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         
-        self.currentElementName = nil
+        currentElementName = nil
         
     }
     
     func parserDidEndDocument(_ parser: XMLParser) {
         
-        self.tableView.reloadData()
+        tableView.reloadData()
         
     }
     
