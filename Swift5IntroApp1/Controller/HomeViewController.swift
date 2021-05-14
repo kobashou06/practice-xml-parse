@@ -7,7 +7,8 @@ import ImpressiveNotifications
 
 class HomeViewController: SegementSlideDefaultViewController {
     
-    var uiSwitch = UISwitch()
+    //Change JSON Parse or XML Parse
+    var forChangeFlgSwitch = UISwitch()
     
     private var jsonParseFlg: Bool = true
     
@@ -19,14 +20,9 @@ class HomeViewController: SegementSlideDefaultViewController {
 
         super.viewDidLoad()
         
-        view.addSubview(uiSwitch)
+        view.addSubview(forChangeFlgSwitch)
         
-        uiSwitch.translatesAutoresizingMaskIntoConstraints = false
-        uiSwitch.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
-        uiSwitch.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2).isActive = true
-        uiSwitch.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1).isActive = true
-        view.bringSubviewToFront(uiSwitch)
-        uiSwitch.addTarget(self, action: #selector(jsonParseFlgSwitch(sender:)), for: UIControl.Event.valueChanged)
+        setupForChangeFlgSwitch()
 
         reloadData()
 
@@ -47,7 +43,23 @@ class HomeViewController: SegementSlideDefaultViewController {
         reloadData()
         defaultSelectedIndex = 0
     }
-
+    
+    private func setupForChangeFlgSwitch() {
+        //最前面に配置する
+        view.bringSubviewToFront(forChangeFlgSwitch)
+        
+        //初期値はtrue
+        forChangeFlgSwitch.setOn(true, animated: true)
+        
+        //操作時の関数割り当て
+        forChangeFlgSwitch.addTarget(self, action: #selector(jsonParseFlgSwitch(sender:)), for: UIControl.Event.valueChanged)
+        
+        //AutoLayoutの設定
+        forChangeFlgSwitch.translatesAutoresizingMaskIntoConstraints = false
+        forChangeFlgSwitch.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
+        forChangeFlgSwitch.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2).isActive = true
+        forChangeFlgSwitch.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1).isActive = true
+    }
     
     override func segementSlideHeaderView() -> UIView {
 
@@ -62,11 +74,11 @@ class HomeViewController: SegementSlideDefaultViewController {
 
         if #available(iOS 11.0, *) {
 
-            headerHeight = view.bounds.height/4+view.safeAreaInsets.top
+            headerHeight = view.bounds.height / 4 + view.safeAreaInsets.top
 
         } else {
 
-            headerHeight = view.bounds.height/4+topLayoutGuide.length
+            headerHeight = view.bounds.height / 4 + topLayoutGuide.length
 
         }
 
@@ -95,12 +107,13 @@ class HomeViewController: SegementSlideDefaultViewController {
     
     @objc public func jsonParseFlgSwitch(sender: UISwitch) {
         
+        //フラグの操作
         if sender.isOn {
             self.jsonParseFlg = true
         }else{
             self.jsonParseFlg = false
         }
-        
+        //フラグ変更後、画面をリロードする
         reloadData()
         defaultSelectedIndex = 0
     

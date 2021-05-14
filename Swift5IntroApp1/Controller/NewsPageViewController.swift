@@ -9,20 +9,17 @@
 
 import UIKit
 import SegementSlide
-import Alamofire
-import SwiftyJSON
 
 class NewsPageViewController: UITableViewController {
     
-    //共通で使用
-    private var articleArray = [ArticleModel]()
-    private var urlModel = URLModel()
-    private var urlString: String
+    //json,xml共通使用
+    var articleArray = [ArticleModel]()
+    var urlString: String
     private var jsonParseFlg: Bool
     
     //XML解析で使用
-    private var parser = XMLParser()
-    private var currentElementName: String!
+    var parser = XMLParser()
+    var currentElementName: String!
     
     init(urlString: String, jsonParseFlg: Bool) {
         
@@ -128,128 +125,6 @@ extension NewsPageViewController: SegementSlideContentScrollViewDelegate {
         //４：次の画面へGO
         present(navigationController, animated: true, completion: nil)
 
-    }
-    
-    
-    
-}
-
-extension NewsPageViewController {
-    
-    //JSONパース
-    private func request() {
-
-        AF.request(urlString as URLConvertible , method: .get,encoding: JSONEncoding.default).responseJSON{(response) in
-            switch response.result{
-            case .success:
-                do{
-                    
-                    let json: JSON = try JSON(data: response.data!)
-                    var totalHitCount = json.count
-                    
-                    if totalHitCount > 50{
-                        totalHitCount = 50
-                    }
-                    
-                    for i in 0...totalHitCount - 1 {
-                        
-                        if json[i]["title"] != "" && json[i]["url"] != "" {
-                            
-                            let item = ArticleModel()
-                            item.title = json[i]["title"].string
-                            item.url = json[i]["url"].string
-                            self.articleArray.append(item)
-                           
-                        }else{
-                            print("何かしらが空です")
-                        }
-                    }
-                    
-                }catch{
-                    print("error")
-                }
-                
-                break
-                
-            case .failure: break
-                
-            }
-            
-            self.tableView.reloadData()
-            
-        }
-        
-    }
-    
-}
-
-extension NewsPageViewController: XMLParserDelegate {
-    
-    func xmlParse() {
-        
-        guard let url = URL(string: urlString) else {
-            return
-        }
-        
-        guard let parser =  XMLParser(contentsOf: url) else {
-            return
-        }
-        
-        parser.delegate = self
-        parser.parse()
-        
-    }
-    
-    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
-        
-        currentElementName = nil
-        
-        if elementName == "item" {
-            
-            self.articleArray.append(ArticleModel())
-            
-        }else{
-            
-            currentElementName = elementName
-            
-        }
-        
-    }
-    
-    func parser(_ parser: XMLParser, foundCharacters string: String) {
-        
-        if self.articleArray.count > 0 {
-            
-            let lastItem = self.articleArray[self.articleArray.count - 1]
-            print(lastItem)
-            
-            switch self.currentElementName {
-            
-            case "title":
-                lastItem.title = string
-                
-            case "link":
-                lastItem.url = string
-                
-            default:
-                break
-                
-            }
-            
-        }
-        
-    }
-    
-    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-        
-        self.currentElementName = nil
-        
-    }
-    
-    func parserDidEndDocument(_ parser: XMLParser) {
-        
-        self.tableView.reloadData()
-        
     }
     
 }

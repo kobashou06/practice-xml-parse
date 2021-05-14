@@ -33,7 +33,7 @@ struct URLModel {
             
             var titleModel = TitleInSwitcherModel()
             let words = titleModel.getTitle(jsonParseFlg: jsonParseFlg)
-            let word:String? = words[index]
+            let word: String? = words[index]
             
             //wordの中身をチェックする
             guard let receivedWord = word else {
