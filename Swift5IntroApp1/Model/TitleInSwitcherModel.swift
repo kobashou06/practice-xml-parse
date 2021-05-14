@@ -8,5 +8,23 @@
 import Foundation
 
 struct TitleInSwitcherModel {
-    let words = ["Swift","CocoaPods","Carthage","Xcode","SwiftUI","アーキテクチャ"]
+    
+    var words: [String] = []
+    
+    mutating func getTitle(jsonParseFlag: Bool) -> [String] {
+        
+        if jsonParseFlag == false {
+            
+            words = ["TOP", "Abema TIMES", "Yahoo! JAPAN クリエイターズプログラム", "IT", "BuzzFeed Japan", "CNN.co.jp"]
+            
+            return words
+            
+        }
+        
+        words = ["Swift", "CocoaPods", "Carthage", "Xcode", "SwiftUI", "アーキテクチャ"]
+        
+        return words
+            
+    }
+    
 }
