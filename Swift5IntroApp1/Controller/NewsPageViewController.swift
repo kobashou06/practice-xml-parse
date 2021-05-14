@@ -12,19 +12,19 @@ import SegementSlide
 
 class NewsPageViewController: UITableViewController {
     
-    //json,xml共通使用
+    //json, xml共通使用
     var articleArray = [ArticleModel]()
     var urlString: String
-    private var jsonParseFlg: Bool
+    private var jsonParseFlag: Bool
     
     //XML解析で使用
     var parser = XMLParser()
     var currentElementName: String!
     
-    init(urlString: String, jsonParseFlg: Bool) {
+    init(urlString: String, jsonParseFlag: Bool) {
         
         self.urlString = urlString
-        self.jsonParseFlg = jsonParseFlg
+        self.jsonParseFlag = jsonParseFlag
         super.init(nibName: nil, bundle: nil)
         
     }
@@ -37,7 +37,7 @@ class NewsPageViewController: UITableViewController {
         
         super.viewDidLoad()
         
-        if jsonParseFlg == true {
+        if jsonParseFlag == true {
             
             request()
             
@@ -86,7 +86,7 @@ extension NewsPageViewController: SegementSlideContentScrollViewDelegate {
         
         let article = self.articleArray[indexPath.row]
         
-        if jsonParseFlg == true {
+        if jsonParseFlag == true {
             
             cell.backgroundColor = .systemGreen
             

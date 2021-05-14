@@ -8,9 +8,9 @@ import ImpressiveNotifications
 class HomeViewController: SegementSlideDefaultViewController {
     
     //Change JSON Parse or XML Parse
-    var forChangeFlgSwitch = UISwitch()
+    var forChangeFlagSwitch = UISwitch()
     
-    private var jsonParseFlg: Bool = true
+    private var jsonParseFlag: Bool = true
     
     private var titleInSwitcherModel = TitleInSwitcherModel()
 
@@ -20,16 +20,16 @@ class HomeViewController: SegementSlideDefaultViewController {
 
         super.viewDidLoad()
         
-        view.addSubview(forChangeFlgSwitch)
+        view.addSubview(forChangeFlagSwitch)
         
-        setupForChangeFlgSwitch()
+        setupForChangeFlagSwitch()
 
         reloadData()
 
         defaultSelectedIndex = 0
         
         //ImpressiveNotificationsを使って、通知を出してみる（ログイン成功を伝える）
-        INNotifications.show(type: .success,data: INNotificationData(title: "Success",
+        INNotifications.show(type: .success, data: INNotificationData(title: "Success",
                                                                      description: "Login was successful!",
                                                                      image: nil,
                                                                      delay: 2.0,
@@ -44,21 +44,21 @@ class HomeViewController: SegementSlideDefaultViewController {
         defaultSelectedIndex = 0
     }
     
-    private func setupForChangeFlgSwitch() {
+    private func setupForChangeFlagSwitch() {
         //最前面に配置する
-        view.bringSubviewToFront(forChangeFlgSwitch)
+        view.bringSubviewToFront(forChangeFlagSwitch)
         
         //初期値はtrue
-        forChangeFlgSwitch.setOn(true, animated: true)
+        forChangeFlagSwitch.setOn(true, animated: true)
         
         //操作時の関数割り当て
-        forChangeFlgSwitch.addTarget(self, action: #selector(jsonParseFlgSwitch(sender:)), for: UIControl.Event.valueChanged)
+        forChangeFlagSwitch.addTarget(self, action: #selector(jsonParseFlagSwitch(sender:)), for: UIControl.Event.valueChanged)
         
         //AutoLayoutの設定
-        forChangeFlgSwitch.translatesAutoresizingMaskIntoConstraints = false
-        forChangeFlgSwitch.topAnchor.constraint(equalTo: view.topAnchor, constant: view.bounds.size.height / 6).isActive = true
-        forChangeFlgSwitch.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2).isActive = true
-        forChangeFlgSwitch.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1).isActive = true
+        forChangeFlagSwitch.translatesAutoresizingMaskIntoConstraints = false
+        forChangeFlagSwitch.topAnchor.constraint(equalTo: view.topAnchor, constant: view.bounds.size.height / 6).isActive = true
+        forChangeFlagSwitch.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2).isActive = true
+        forChangeFlagSwitch.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1).isActive = true
     }
     
     override func segementSlideHeaderView() -> UIView {
@@ -89,29 +89,29 @@ class HomeViewController: SegementSlideDefaultViewController {
     }
 
     override var titlesInSwitcher: [String] {
-        return titleInSwitcherModel.getTitle(jsonParseFlg: jsonParseFlg)
+        return titleInSwitcherModel.getTitle(jsonParseFlag: jsonParseFlag)
     }
     
     override func segementSlideContentViewController(at index: Int) -> SegementSlideContentScrollViewDelegate? {
  
         //nilの場合、defaultUrlを返す
-        guard let homeVCUrlString = urlModel.getURLString(index: index, jsonParseFlg: jsonParseFlg) else {
+        guard let homeVCUrlString = urlModel.getURLString(index: index, jsonParseFlag: jsonParseFlag) else {
             
-            return NewsPageViewController(urlString: urlModel.defaultUrl, jsonParseFlg: jsonParseFlg)
+            return NewsPageViewController(urlString: urlModel.defaultUrl, jsonParseFlag: jsonParseFlag)
             
         }
         
-        return NewsPageViewController(urlString: homeVCUrlString, jsonParseFlg: jsonParseFlg)
+        return NewsPageViewController(urlString: homeVCUrlString, jsonParseFlag: jsonParseFlag)
         
     }
     
-    @objc public func jsonParseFlgSwitch(sender: UISwitch) {
+    @objc private func jsonParseFlagSwitch(sender: UISwitch) {
         
         //フラグの操作
         if sender.isOn {
-            self.jsonParseFlg = true
-        }else{
-            self.jsonParseFlg = false
+            jsonParseFlag = true
+        } else {
+            jsonParseFlag = false
         }
         //フラグ変更後、画面をリロードする
         reloadData()

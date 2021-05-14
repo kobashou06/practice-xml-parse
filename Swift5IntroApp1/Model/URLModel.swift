@@ -27,12 +27,12 @@ struct URLModel {
                                 "https://news.yahoo.co.jp/rss/media/cnn/all.xml"]
     
     //HomeVCからキーワードを受け取り、生成したURLを返す
-    mutating func getURLString(index: Int, jsonParseFlg: Bool) -> String? {
+    mutating func getURLString(index: Int, jsonParseFlag: Bool) -> String? {
         
-        if jsonParseFlg == true {
+        if jsonParseFlag == true {
             
             var titleModel = TitleInSwitcherModel()
-            let words = titleModel.getTitle(jsonParseFlg: jsonParseFlg)
+            let words = titleModel.getTitle(jsonParseFlag: jsonParseFlag)
             let word: String? = words[index]
             
             //wordの中身をチェックする

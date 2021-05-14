@@ -11,9 +11,9 @@ struct TitleInSwitcherModel {
     
     var words: [String] = []
     
-    mutating func getTitle(jsonParseFlg: Bool) -> [String] {
+    mutating func getTitle(jsonParseFlag: Bool) -> [String] {
         
-        if jsonParseFlg == false {
+        if jsonParseFlag == false {
             
             words = ["TOP","Abema TIMES","Yahoo! JAPAN クリエイターズプログラム","IT","BuzzFeed Japan","CNN.co.jp"]
             
